@@ -77,6 +77,6 @@ public class Intake extends Subsystem
 	public void outputToSmartDashboard() {
 		SmartDashboard.putNumber("Intake_Speed", mIntakeVictor.getSpeed());
 		SmartDashboard.putString("Roller_State", mIntakeRollerState.toString());
-		SmartDashboard.putString("Sensor_Value", .toString());
+		SmartDashboard.putString("Sensor_Value", toString());
 	}
 }
