@@ -9,6 +9,18 @@ import com.team3418.frc2018.subsystems.Intake;
 import com.team3418.frc2018.subsystems.MrGush;
 import com.team3418.frc2018.subsystems.Shooter;
 
+<<<<<<< HEAD:src/com/team3418/frc2018/Robot.java
+=======
+import com.team3418.frc2017.auto.AutoExecuter;
+import com.team3418.frc2017.plugins.MinionVision;
+import com.team3418.frc2017.subsystems.Agitator;
+import com.team3418.frc2017.subsystems.Climber;
+import com.team3418.frc2017.subsystems.Drivetrain;
+import com.team3418.frc2017.subsystems.Intake;
+import com.team3418.frc2017.subsystems.Laser;
+import com.team3418.frc2017.subsystems.MrGush;
+import com.team3418.frc2017.subsystems.Shooter;
+>>>>>>> refs/remotes/nawage/master:src/com/team3418/frc2017/Robot.java
 import edu.wpi.first.wpilibj.IterativeRobot;
 
 
@@ -26,6 +38,7 @@ public class Robot extends IterativeRobot {
 //	Intake mIntake;
 //	Shooter mShooter;
 //	MrGush mMrGush;
+	Laser mLaser;
 	
 	AutoExecuter mAutoExecuter = null;
 	
@@ -36,6 +49,7 @@ public class Robot extends IterativeRobot {
 //		mIntake.updateSubsystem();
 //		mShooter.updateSubsystem();
 //		mMrGush.updateSubsystem();
+	    mLaser.updateSubsystem();;
 	}
 	
 	public void stopAllSubsystems(){
@@ -48,6 +62,7 @@ public class Robot extends IterativeRobot {
 //		mShooter.stopFeeder();
 //		mShooter.stop();
 //		mMrGush.stop();
+		mLaser.stop();;
 	}
 	
 	@Override
@@ -65,6 +80,7 @@ public class Robot extends IterativeRobot {
 //		mIntake = Intake.getInstance();
 //		mShooter = Shooter.getInstance();
 //		mMrGush = MrGush.getInstance();
+		mLaser = Laser.getInstance();
 //		
 //		mSmartDashboardInteractions.initWithDefaults();
 		
@@ -107,6 +123,7 @@ public class Robot extends IterativeRobot {
         //mMinionVision.stopVision();
         mDrivetrain.resetEncoders();
         mDrivetrain.highGear();
+        
 		
 		stopAllSubsystems();
 		updateAllSubsystems();
@@ -216,7 +233,8 @@ public class Robot extends IterativeRobot {
 		}
 		//---------------------------------------------------
 		
-		
+		//Laser
+		mLaser.updateSubsystem();
 		
 		//MrGushy
 		
