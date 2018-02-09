@@ -6,26 +6,14 @@ import com.team3418.frc2018.subsystems.Agitator;
 import com.team3418.frc2018.subsystems.Climber;
 import com.team3418.frc2018.subsystems.Drivetrain;
 import com.team3418.frc2018.subsystems.Intake;
+import com.team3418.frc2018.subsystems.Laser;
 import com.team3418.frc2018.subsystems.MrGush;
 import com.team3418.frc2018.subsystems.Shooter;
 
-<<<<<<< HEAD:src/com/team3418/frc2018/Robot.java
-=======
-import com.team3418.frc2017.auto.AutoExecuter;
-import com.team3418.frc2017.plugins.MinionVision;
-import com.team3418.frc2017.subsystems.Agitator;
-import com.team3418.frc2017.subsystems.Climber;
-import com.team3418.frc2017.subsystems.Drivetrain;
-import com.team3418.frc2017.subsystems.Intake;
-import com.team3418.frc2017.subsystems.Laser;
-import com.team3418.frc2017.subsystems.MrGush;
-import com.team3418.frc2017.subsystems.Shooter;
->>>>>>> refs/remotes/nawage/master:src/com/team3418/frc2017/Robot.java
 import edu.wpi.first.wpilibj.IterativeRobot;
 
-
 public class Robot extends IterativeRobot {
-	//initalize main parts of the robot
+	//Initialize main parts of the robot
 	HardwareMap mHardwareMap;
 	ControlBoard mControlBoard;
 //	SmartDashboardInteractions mSmartDashboardInteractions;
@@ -102,7 +90,6 @@ public class Robot extends IterativeRobot {
 //		updateAllSubsystems();
 		
 	}
-	
 	
 	@Override
 	public void autonomousPeriodic() {
