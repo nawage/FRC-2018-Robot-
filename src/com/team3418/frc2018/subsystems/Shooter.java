@@ -38,44 +38,44 @@ public class Shooter extends Subsystem {
 		mFeederVictor.setInverted(true);
 		
 		//Left Front Talon Motor Controller
-		mLeftShooterTalon = new CANTalon(Constants.kLeftFrontShooterMotorId);		
-		mLeftShooterTalon.setFeedbackDevice(FeedbackDevice.CtreMagEncoder_Relative);
-		mLeftShooterTalon.changeControlMode(TalonControlMode.PercentVbus);
-		mLeftShooterTalon.set(0);
-		mLeftShooterTalon.setPID(Constants.kFlywheelKp, Constants.kFlywheelKi, Constants.kFlywheelKd, Constants.kFlywheelKf,
+		mLeftFrontShooterTalon = new CANTalon(Constants.kLeftFrontShooterMotorId);		
+		mLeftFrontShooterTalon.setFeedbackDevice(FeedbackDevice.CtreMagEncoder_Relative);
+		mLeftFrontShooterTalon.changeControlMode(TalonControlMode.PercentVbus);
+		mLeftFrontShooterTalon.set(0);
+		mLeftFrontShooterTalon.setPID(Constants.kFlywheelKp, Constants.kFlywheelKi, Constants.kFlywheelKd, Constants.kFlywheelKf,
                 Constants.kFlywheelIZone, Constants.kFlywheelRampRate, 0);
-		mLeftShooterTalon.setProfile(0);
-		mLeftShooterTalon.reverseSensor(false);
-		mLeftShooterTalon.reverseOutput(false);
+		mLeftFrontShooterTalon.setProfile(0);
+		mLeftFrontShooterTalon.reverseSensor(false);
+		mLeftFrontShooterTalon.reverseOutput(false);
 		
-		mLeftShooterTalon.setVoltageRampRate(0);
-		mLeftShooterTalon.enableBrakeMode(false);
-		mLeftShooterTalon.clearStickyFaults();
+		mLeftFrontShooterTalon.setVoltageRampRate(0);
+		mLeftFrontShooterTalon.enableBrakeMode(false);
+		mLeftFrontShooterTalon.clearStickyFaults();
 		
-		mLeftShooterTalon.configNominalOutputVoltage(+0.0f, -0.0f);
-		mLeftShooterTalon.configPeakOutputVoltage(+12.0f, -0.0f);
-		mLeftShooterTalon.setAllowableClosedLoopErr(Constants.kFlywheelAllowableError);	
+		mLeftFrontShooterTalon.configNominalOutputVoltage(+0.0f, -0.0f);
+		mLeftFrontShooterTalon.configPeakOutputVoltage(+12.0f, -0.0f);
+		mLeftFrontShooterTalon.setAllowableClosedLoopErr(Constants.kFlywheelAllowableError);	
 		//
-		System.out.println("leftshooterdoneinit");
+		System.out.println("leftfrontshooterdoneinit");
 		
 		//Right Front Talon Motor Controller
-		mRightShooterTalon = new CANTalon(Constants.kRightFrontShooterMotorId);
-		mRightShooterTalon.setFeedbackDevice(FeedbackDevice.CtreMagEncoder_Relative);
-		mRightShooterTalon.changeControlMode(TalonControlMode.PercentVbus);
-		mRightShooterTalon.set(0);
-		mRightShooterTalon.setPID(Constants.kFlywheelKp, Constants.kFlywheelKi, Constants.kFlywheelKd, Constants.kFlywheelKf,
+		mRightFrontShooterTalon = new CANTalon(Constants.kRightFrontShooterMotorId);
+		mRightFrontShooterTalon.setFeedbackDevice(FeedbackDevice.CtreMagEncoder_Relative);
+		mRightFrontShooterTalon.changeControlMode(TalonControlMode.PercentVbus);
+		mRightFrontShooterTalon.set(0);
+		mRightFrontShooterTalon.setPID(Constants.kFlywheelKp, Constants.kFlywheelKi, Constants.kFlywheelKd, Constants.kFlywheelKf,
                 Constants.kFlywheelIZone, Constants.kFlywheelRampRate, 0);
-		mRightShooterTalon.setProfile(0);
-		mRightShooterTalon.reverseSensor(true);
-		mRightShooterTalon.reverseOutput(true);
+		mRightFrontShooterTalon.setProfile(0);
+		mRightFrontShooterTalon.reverseSensor(true);
+		mRightFrontShooterTalon.reverseOutput(true);
 		
-		mRightShooterTalon.setVoltageRampRate(0);
-		mRightShooterTalon.enableBrakeMode(false);
-		mRightShooterTalon.clearStickyFaults();
+		mRightFrontShooterTalon.setVoltageRampRate(0);
+		mRightFrontShooterTalon.enableBrakeMode(false);
+		mRightFrontShooterTalon.clearStickyFaults();
 		
-		mRightShooterTalon.configNominalOutputVoltage(+0.0f, -0.0f);
-		mRightShooterTalon.configPeakOutputVoltage(+.0f, -12.0f);
-		mRightShooterTalon.setAllowableClosedLoopErr(Constants.kFlywheelAllowableError);		
+		mRightFrontShooterTalon.configNominalOutputVoltage(+0.0f, -0.0f);
+		mRightFrontShooterTalon.configPeakOutputVoltage(+.0f, -12.0f);
+		mRightFrontShooterTalon.setAllowableClosedLoopErr(Constants.kFlywheelAllowableError);		
 		
 		mTargetShooterRpm = Constants.kTargetShooterRpm;
 		mFeederSpeed = Constants.kFeederSpeed;
@@ -227,17 +227,17 @@ public class Shooter extends Subsystem {
 	
 	//set shooter speed
 	public void setShooterRpm(double rpm){
-		mLeftShooterTalon.changeControlMode(TalonControlMode.Speed);
-		mLeftShooterTalon.set(rpm);
-		mRightShooterTalon.changeControlMode(TalonControlMode.Speed);
-		mRightShooterTalon.set(rpm);
+		mLeftFrontShooterTalon.changeControlMode(TalonControlMode.Speed);
+		mLeftFrontShooterTalon.set(rpm);
+		mRightFrontShooterTalon.changeControlMode(TalonControlMode.Speed);
+		mRightFrontShooterTalon.set(rpm);
 	}
 	
 	public void setShooterOpenLoop(double speed){
-		mLeftShooterTalon.changeControlMode(TalonControlMode.PercentVbus);
-		mLeftShooterTalon.set(speed);
-		mRightShooterTalon.changeControlMode(TalonControlMode.PercentVbus);
-		mRightShooterTalon.set(speed);
+		mLeftFrontShooterTalon.changeControlMode(TalonControlMode.PercentVbus);
+		mLeftFrontShooterTalon.set(speed);
+		mRightFrontShooterTalon.changeControlMode(TalonControlMode.PercentVbus);
+		mRightFrontShooterTalon.set(speed);
 	}
 	
 	public void setFeederOpenLoop(double speed){
@@ -247,13 +247,13 @@ public class Shooter extends Subsystem {
 	
 	//set shooter ready state
 	private boolean leftIsOnTarget(){
-		return (mLeftShooterTalon.getControlMode() == CANTalon.TalonControlMode.Speed
-                && Math.abs(getLeftRpm() - getLeftSetpoint()) < Constants.kFlywheelOnTargetTolerance);
+		return (mLeftFrontShooterTalon.getControlMode() == CANTalon.TalonControlMode.Speed
+                && Math.abs(getLeftFrontRpm() - getLeftFrontSetpoint()) < Constants.kFlywheelOnTargetTolerance);
 	}
 	
 	private boolean RightIsOnTarget(){
-		return (mRightShooterTalon.getControlMode() == CANTalon.TalonControlMode.Speed
-                && Math.abs(getRightRpm() - getRightSetpoint()) < Constants.kFlywheelOnTargetTolerance);
+		return (mRightFrontShooterTalon.getControlMode() == CANTalon.TalonControlMode.Speed
+                && Math.abs(getRightFrontRpm() - getRightFrontSetpoint()) < Constants.kFlywheelOnTargetTolerance);
 	}
 	
 	private boolean bothIsOnTarget(){
