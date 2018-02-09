@@ -37,7 +37,7 @@ public class Robot extends IterativeRobot {
 //		mIntake.updateSubsystem();
 //		mShooter.updateSubsystem();
 //		mMrGush.updateSubsystem();
-	    mLaser.updateSubsystem();;
+	    mLaser.updateSubsystem();
 	}
 	
 	public void stopAllSubsystems(){
@@ -50,7 +50,7 @@ public class Robot extends IterativeRobot {
 //		mShooter.stopFeeder();
 //		mShooter.stop();
 //		mMrGush.stop();
-		mLaser.stop();;
+		mLaser.stop();
 	}
 	
 	@Override

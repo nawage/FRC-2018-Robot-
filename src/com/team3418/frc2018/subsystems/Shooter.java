@@ -18,8 +18,10 @@ public class Shooter extends Subsystem {
         return mInstance;
     }
     
-    CANTalon mLeftShooterTalon;
-	CANTalon mRightShooterTalon;
+    CANTalon mLeftFrontShooterTalon;
+	CANTalon mLeftRearShooterTalon;
+	CANTalon mRightFrontShooterTalon;
+	CANTalon mRightRearShooterTalon;
 	VictorSP mFeederVictor;
 	
 	Agitator mAgitator;
@@ -35,8 +37,8 @@ public class Shooter extends Subsystem {
 		mFeederVictor= HardwareMap.getInstance().mFeederTalon;
 		mFeederVictor.setInverted(true);
 		
-		//Left Talon Motor Controller
-		mLeftShooterTalon = new CANTalon(Constants.kLeftShooterMotorId);		
+		//Left Front Talon Motor Controller
+		mLeftShooterTalon = new CANTalon(Constants.kLeftFrontShooterMotorId);		
 		mLeftShooterTalon.setFeedbackDevice(FeedbackDevice.CtreMagEncoder_Relative);
 		mLeftShooterTalon.changeControlMode(TalonControlMode.PercentVbus);
 		mLeftShooterTalon.set(0);
@@ -56,8 +58,8 @@ public class Shooter extends Subsystem {
 		//
 		System.out.println("leftshooterdoneinit");
 		
-		//Right Talon Motor Controller
-		mRightShooterTalon = new CANTalon(Constants.kRightShooterMotorId);
+		//Right Front Talon Motor Controller
+		mRightShooterTalon = new CANTalon(Constants.kRightFrontShooterMotorId);
 		mRightShooterTalon.setFeedbackDevice(FeedbackDevice.CtreMagEncoder_Relative);
 		mRightShooterTalon.changeControlMode(TalonControlMode.PercentVbus);
 		mRightShooterTalon.set(0);
@@ -190,20 +192,36 @@ public class Shooter extends Subsystem {
 	}
 	
 	//get shooter speed info
-	private double getLeftRpm(){
-		return mLeftShooterTalon.getSpeed();
+	private double getLeftFrontRpm(){
+		return mLeftFrontShooterTalon.getSpeed();
 	}
 	
-	private double getRightRpm(){
-		return mRightShooterTalon.getSpeed();
+	private double getLeftRearRpm(){
+		return mLeftRearShooterTalon.getSpeed();
 	}
 	
-	private double getLeftSetpoint(){
-		return mLeftShooterTalon.getSetpoint();
+	private double getRightFrontRpm(){
+		return mRightFrontShooterTalon.getSpeed();
 	}
 	
-	private double getRightSetpoint(){
-		return mRightShooterTalon.getSetpoint();
+	private double getRightRearRpm(){
+		return mRightRearShooterTalon.getSpeed();
+	}
+	
+	private double getLeftFrontSetpoint(){
+		return mLeftFrontShooterTalon.getSetpoint();
+	}
+	
+	private double getLeftRearSetpoint(){
+		return mLeftRearShooterTalon.getSetpoint();
+	}
+	
+	private double getRightFrontSetpoint(){
+		return mRightFrontShooterTalon.getSetpoint();
+	}
+	
+	private double getRightRearSetpoint(){
+		return mRightRearShooterTalon.getSetpoint();
 	}
 	//
 	
@@ -253,17 +271,23 @@ public class Shooter extends Subsystem {
         SmartDashboard.putBoolean("Flywheel_On_Target_Left", leftIsOnTarget());
         SmartDashboard.putBoolean("Flywheel_On_Target_Right", RightIsOnTarget());
         
-		SmartDashboard.putNumber("Left_Flywheel_rpm", getLeftRpm());
-		SmartDashboard.putNumber("Right_Flywheel_rpm", getRightRpm());
+		SmartDashboard.putNumber("LeftFront_Flywheel_rpm", getLeftFrontRpm());
+		SmartDashboard.putNumber("LeftRear_Flywheel_rpm", getLeftRearRpm());
+		SmartDashboard.putNumber("RightFront_Flywheel_rpm", getRightFrontRpm());
+		SmartDashboard.putNumber("RightRear_Flywheel_rpm", getRightRearRpm());
         SmartDashboard.putNumber("Feeder_Speed", mFeederVictor.getSpeed());
 		
 		SmartDashboard.putNumber("Target_Shooter_rpm", getTargetShooterRpm());
 		SmartDashboard.putNumber("Target_Feeder_Speed", getTargetFeederSpeed());
         
-        SmartDashboard.putNumber("Left_Flywheel_Closed_Loop_error", mLeftShooterTalon.getClosedLoopError());
-        SmartDashboard.putNumber("Left_Flywheel_Closed_Loop_error_Number", mLeftShooterTalon.getClosedLoopError());
-        SmartDashboard.putNumber("Right_Flywheel_Closed_Loop_error", mRightShooterTalon.getClosedLoopError());
-        SmartDashboard.putNumber("Right_Flywheel_Closed_Loop_error_Number", mRightShooterTalon.getClosedLoopError());
+        SmartDashboard.putNumber("LeftFront_Flywheel_Closed_Loop_error", mLeftFrontShooterTalon.getClosedLoopError());
+        SmartDashboard.putNumber("LeftFront_Flywheel_Closed_Loop_error_Number", mLeftFrontShooterTalon.getClosedLoopError());
+        SmartDashboard.putNumber("LeftRear_Flywheel_Closed_Loop_error", mLeftRearShooterTalon.getClosedLoopError());
+        SmartDashboard.putNumber("LeftRear_Flywheel_Closed_Loop_error_Number", mLeftRearShooterTalon.getClosedLoopError());
+        SmartDashboard.putNumber("RightFront_Flywheel_Closed_Loop_error", mRightFrontShooterTalon.getClosedLoopError());
+        SmartDashboard.putNumber("RightFront_Flywheel_Closed_Loop_error_Number", mRightFrontShooterTalon.getClosedLoopError());
+        SmartDashboard.putNumber("RightRear_Flywheel_Closed_Loop_error", mRightRearShooterTalon.getClosedLoopError());
+        SmartDashboard.putNumber("RightRear_Flywheel_Closed_Loop_error_Number", mRightRearShooterTalon.getClosedLoopError());
         
         SmartDashboard.putString("Shooter_State", mShooterState.toString());
         SmartDashboard.putString("ShooterReady_State", mShooterReadyState.toString());
