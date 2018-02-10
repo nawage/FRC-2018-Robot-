@@ -6,7 +6,7 @@ import com.team3418.frc2018.subsystems.Climber;
 import com.team3418.frc2018.subsystems.Drivetrain;
 import com.team3418.frc2018.subsystems.Intake;
 import com.team3418.frc2018.subsystems.Laser;
-import com.team3418.frc2018.subsystems.MrGush;
+import com.team3418.frc2018.subsystems.MrCush;
 import com.team3418.frc2018.subsystems.Ramp;
 import com.team3418.frc2018.subsystems.Shooter;
 
@@ -24,19 +24,18 @@ public class Robot extends IterativeRobot {
 	Drivetrain mDrivetrain;
 //	Intake mIntake;
 //	Shooter mShooter;
-//	MrGush mMrGush;
+//	MrCush mMrGush;
 	Laser mLaser;
 //	Ramp mRamp;
 	
 	AutoExecuter mAutoExecuter = null;
 	
 	public void updateAllSubsystems(){
-//		mAgitator.updateSubsystem();
 //		mClimber.updateSubsystem();
 		mDrivetrain.updateSubsystem();
 //		mIntake.updateSubsystem();
 //		mShooter.updateSubsystem();
-//		mMrGush.updateSubsystem();
+//		mMrCush.updateSubsystem();
 	    mLaser.updateSubsystem();
 //	    mRamp.updateSubsystem();
 	}
@@ -49,7 +48,7 @@ public class Robot extends IterativeRobot {
 //		mIntake.stop();
 //		mShooter.stopFeeder();
 //		mShooter.stop();
-//		mMrGush.stop();
+//		mMrCush.stop();
 		mLaser.stop();
 //		mRamp.stop();
 	}
@@ -67,7 +66,7 @@ public class Robot extends IterativeRobot {
 		mDrivetrain = Drivetrain.getInstance();
 //		mIntake = Intake.getInstance();
 //		mShooter = Shooter.getInstance();
-//		mMrGush = MrGush.getInstance();
+//		mMrCush = MrGush.getInstance();
 		mLaser = Laser.getInstance();
 //		mRamp = Ramp.getInstance();
 //		

@@ -5,29 +5,29 @@ import com.team3418.frc2018.Constants;
 import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
-public class MrGush extends Subsystem {
+public class MrCush extends Subsystem {
 	
-	static MrGush mInstance = new MrGush();
+	static MrCush mInstance = new MrCush();
 
-    public static MrGush getInstance() {
+    public static MrCush getInstance() {
         return mInstance;
     }
     
-	public MrGush() {
-		MrGushySolenoid = new Solenoid(Constants.kMrGushySolenoid);
-		System.out.println("Mr Gushy has been initialized :D");
+	public MrCush() {
+		//MrCushySolenoid = new Solenoid(Constants.kMrCushySolenoid);
+		System.out.println("Mr Cushy has been initialized :D");
 	}
 
-	private Solenoid MrGushySolenoid;
+	private Solenoid MrCushySolenoid;
 	
-	public enum MrGushState {
+	public enum MrCushState {
       	EXTENDED, RETRACTED
     }
   	
-  	private MrGushState MrGushState;
+  	private MrCushState MrCushState;
   	
-  	public MrGushState getClimberState() {
-  		return MrGushState;
+  	public MrCushState getClimberState() {
+  		return MrCushState;
   	}
 	
 
@@ -35,7 +35,7 @@ public class MrGush extends Subsystem {
 	@Override
 	public void updateSubsystem() {
 		
-		switch(MrGushState){
+		switch(MrCushState){
 		case EXTENDED:
 			setExtend();
 			break;
@@ -51,24 +51,24 @@ public class MrGush extends Subsystem {
 	}
 	
 	public void Extend() {
-		MrGushState = MrGushState.EXTENDED;
+		MrCushState = MrCushState.EXTENDED;
 	}
 	
 	public void Retract() {
-		MrGushState = MrGushState.RETRACTED;
+		MrCushState = MrCushState.RETRACTED;
 	}
 	
 	private void setExtend() {
-		MrGushySolenoid.set(true);
+		MrCushySolenoid.set(true);
 	}
 	
 	private void setRetract() {
-		MrGushySolenoid.set(false);
+		MrCushySolenoid.set(false);
 	}
 
 	@Override
 	public void outputToSmartDashboard() {
-		SmartDashboard.putString("MrGushyState", MrGushState.toString());
+		SmartDashboard.putString("MrCushyState", MrCushState.toString());
 	}
 
 	@Override

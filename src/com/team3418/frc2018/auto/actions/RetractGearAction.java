@@ -1,14 +1,14 @@
 package com.team3418.frc2018.auto.actions;
 
-import com.team3418.frc2018.subsystems.MrGush;
+import com.team3418.frc2018.subsystems.MrCush;
 
 public class RetractGearAction implements Action{
 
-	MrGush mMrGush;
+	MrCush mMrGush;
 	
 	
 	public RetractGearAction() {
-		mMrGush = MrGush.getInstance();
+		mMrGush = MrCush.getInstance();
 	}
 	
 	@Override

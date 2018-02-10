@@ -40,7 +40,7 @@ public class HardwareMap {
 //			mGyro = new ADXRS450_Gyro();
 //			mGyro.calibrate();
 			mLaserHardware = new AnalogInput(0);
-			mClimberReleaseHardware = new Solenoid(Constants.kClimberReleaseSolenoidId);
+//			mClimberReleaseHardware = new Solenoid(Constants.kClimberReleaseSolenoidId);
 			
 
 		}
