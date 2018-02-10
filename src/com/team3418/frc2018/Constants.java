@@ -62,16 +62,18 @@ public class Constants {
 	public static int kRightFrontMotorId = 2;
 	public static int kRightRearMotorId = 3;
 	
-	public static int kIntakeRollerId = 4;
-	public static int kClimberId = 5;
-	public static int kFeederId = 6;
-	public static int kAgitatorId = 7;
+	public static int kClimberId = 4;
+	public static int kFeederId = 5;
+	public static int kAgitatorId = 6;
+	public static int kIntakeSolenoidId = 7;
 	
 	//CAN (0-64)
 	public static int kLeftFrontShooterMotorId = 0;
 	public static int kLeftRearShooterMotorId = 1;
 	public static int kRightFrontShooterMotorId = 2;
 	public static int kRightRearShooterMotorId = 3;
+	public static int kIntakeLeftId = 4;
+	public static int kIntakeRightId = 5;
 	
 	//DIO (0-9)
 	public static int kLeftEncoderChannelA = 1;

@@ -56,7 +56,7 @@ public class Shooter extends Subsystem {
 		mLeftFrontShooterTalon.configPeakOutputVoltage(+12.0f, -0.0f);
 		mLeftFrontShooterTalon.setAllowableClosedLoopErr(Constants.kFlywheelAllowableError);	
 		//
-		System.out.println("leftfrontshooterdoneinit");
+		System.out.println("Left Front Shooter Done Initializing.");
 		
 		//Right Front Talon Motor Controller
 		mRightFrontShooterTalon = new CANTalon(Constants.kRightFrontShooterMotorId);
@@ -80,8 +80,8 @@ public class Shooter extends Subsystem {
 		mTargetShooterRpm = Constants.kTargetShooterRpm;
 		mFeederSpeed = Constants.kFeederSpeed;
 		//
-		System.out.println("rightshooterdone init");
-		System.out.println("shooter done initializing");
+		System.out.println("Right Front Shooter Done Initializing.");
+		System.out.println("Shooter Done Initializing.");
 	}
     
     public enum ShooterReadyState {
