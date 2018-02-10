@@ -65,7 +65,6 @@ public class Constants {
 	public static int kClimberId = 4;
 	public static int kFeederId = 5;
 	public static int kAgitatorId = 6;
-	public static int kIntakeSolenoidId = 7;
 	
 	//CAN (0-64)
 	public static int kLeftFrontShooterMotorId = 0;
@@ -85,4 +84,7 @@ public class Constants {
 	public static int kLeftShifterSolenoidId = 0;
 	public static int kRightShifterSolenoidId = 1;
 	public static int kMrGushySolenoid = 2;
+	public static int kIntakeSolenoidId = 3;
+	public static int kRampLeftSolenoidId = 4;
+	public static int kRampRightSolenoidId = 5;
 }
