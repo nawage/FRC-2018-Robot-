@@ -16,7 +16,7 @@ public class Robot extends IterativeRobot {
 	//Initialize main parts of the robot
 	HardwareMap mHardwareMap;
 	ControlBoard mControlBoard;
-//	SmartDashboardInteractions mSmartDashboardInteractions;
+	SmartDashboardInteractions mSmartDashboardInteractions;
 //	MinionVision mMinionVision;
 	
 	//initialize subsystems
@@ -70,24 +70,39 @@ public class Robot extends IterativeRobot {
 		mLaser = Laser.getInstance();
 //		mRamp = Ramp.getInstance();
 //		
-//		mSmartDashboardInteractions.initWithDefaults();
+		mSmartDashboardInteractions.initWithDefaults();
 		
 		stopAllSubsystems();
 	}
 	
 	@Override
 	public void autonomousInit() {
-//		if (mAutoExecuter != null) {
-//            mAutoExecuter.stop();
-//        }
-//        mAutoExecuter = null;
+		if (mAutoExecuter != null) {
+            mAutoExecuter.stop();
+        }
+        mAutoExecuter = null;
 //        
-//        mAutoExecuter = new AutoExecuter();
-//        mAutoExecuter.setAutoRoutine(mSmartDashboardInteractions.getSelectedAutonMode());
-//        mAutoExecuter.start();
-//		
-//		stopAllSubsystems();
-//		updateAllSubsystems();
+        mAutoExecuter = new AutoExecuter();
+        mAutoExecuter.setAutoRoutine(mSmartDashboardInteractions.getSelectedAutonMode());
+        mAutoExecuter.start();
+		
+        /*FMS CODE
+        String gameData;
+		gameData = DriverStation.getInstance().getGameSpecificMessage();
+		if(gameData.length() > 0) {
+			if(gameData.charAt(0) == 'L') {
+			//Put left auto code here
+				
+			}
+			else {
+			//Put right auto code here
+				
+		  	}
+        }
+		*/
+                
+		stopAllSubsystems();
+		updateAllSubsystems();
 		
 	}
 	
