@@ -99,6 +99,7 @@ public class Intake extends Subsystem
 	@Override
 	public void stop(){
 		mIntakeRollerState = IntakeRollerState.STOP;
+		mIntakeArmState = IntakeArmState.OPEN;
 	}
 	
 

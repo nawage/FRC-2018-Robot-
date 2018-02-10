@@ -15,13 +15,13 @@ public class HardwareMap {
 	}
 	
 	public Compressor mCompressor;
-	public VictorSP mAgitatorTalon;
-	public VictorSP mIntakeTalon;
-	public VictorSP mFeederTalon;
-	public VictorSP mClimberTalon;
-	public Solenoid mLeftShifterSolenoid;
-	public Solenoid mRightShifterSolenoid;
-	public AnalogInput mLaser;
+	public VictorSP mIntakeHardware;
+	public VictorSP mFeederHardware;
+	public VictorSP mClimberHardware;
+	public Solenoid mLeftShifterHardware;
+	public Solenoid mRightShifterHardware;
+	public AnalogInput mLaserHardware;
+	public Solenoid mClimberReleaseHardware;
 	
 	
 	
@@ -31,16 +31,16 @@ public class HardwareMap {
 		
 		try
 		{
-//			mAgitatorTalon = new VictorSP(Constants.kAgitatorId);
-//			mClimberTalon = new VictorSP(Constants.kClimberId);
-			mLeftShifterSolenoid = new Solenoid(Constants.kLeftShifterSolenoidId);
-	    	mRightShifterSolenoid = new Solenoid(Constants.kRightShifterSolenoidId);
-//	    	mIntakeTalon = new VictorSP(Constants.kIntakeRollerId);
-//	    	mFeederTalon = new VictorSP(Constants.kFeederId);
+//			mClimberHardware = new VictorSP(Constants.kClimberId);
+			mLeftShifterHardware = new Solenoid(Constants.kLeftShifterSolenoidId);
+	    	mRightShifterHardware = new Solenoid(Constants.kRightShifterSolenoidId);
+//	    	mIntakeHardware = new VictorSP(Constants.kIntakeRollerId);
+//	    	mFeederHardware = new VictorSP(Constants.kFeederId);
 			mCompressor = new Compressor(0);
 //			mGyro = new ADXRS450_Gyro();
 //			mGyro.calibrate();
-			mLaser= new AnalogInput(0);
+			mLaserHardware = new AnalogInput(0);
+			mClimberReleaseHardware = new Solenoid(Constants.kClimberReleaseSolenoidId);
 			
 
 		}

@@ -35,9 +35,9 @@ public class Drivetrain extends Subsystem {
 		final double radius = 2;
 		final double calculated = (2*pi)/ticksPerRev*radius;
 //    	hi
-    	mLeftSolenoid = HardwareMap.getInstance().mLeftShifterSolenoid;
-    	mRightSolenoid = HardwareMap.getInstance().mRightShifterSolenoid;
-    	mLaserInput = HardwareMap.getInstance().mLaser;
+    	mLeftSolenoid = HardwareMap.getInstance().mLeftShifterHardware;
+    	mRightSolenoid = HardwareMap.getInstance().mRightShifterHardware;
+    	mLaserInput = HardwareMap.getInstance().mLaserHardware;
     	
     	mDrive = new RobotDrive(Constants.kLeftFrontMotorId,
     							Constants.kLeftRearMotorId,

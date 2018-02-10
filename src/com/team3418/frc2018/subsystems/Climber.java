@@ -2,7 +2,9 @@ package com.team3418.frc2018.subsystems;
 
 import com.team3418.frc2018.Constants;
 import com.team3418.frc2018.HardwareMap;
+import com.team3418.frc2018.subsystems.Intake.IntakeArmState;
 
+import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj.VictorSP;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
@@ -15,19 +17,30 @@ public class Climber extends Subsystem {
     }
     
     private VictorSP mClimberVictor;
+    private Solenoid mClimberReleaseSolenoid;
         
     public Climber() {
-    	mClimberVictor = HardwareMap.getInstance().mClimberTalon;
+    	mClimberVictor = HardwareMap.getInstance().mClimberHardware;
+    	mClimberReleaseSolenoid = HardwareMap.getInstance().mClimberReleaseHardware;
     }
     
   	public enum ClimberState {
       	FORWARD, REVERSE, STOP, HOLD
     }
   	
+  	public enum ClimberReleaseState {
+      	RELEASED, UNRELEASED
+    }
+  	
   	private ClimberState mClimberState;
+  	private ClimberReleaseState mClimberReleaseState;
   	
   	public ClimberState getClimberState() {
   		return mClimberState;
+  	}
+  	
+  	public ClimberReleaseState getClimberReleaseState() {
+  		return mClimberReleaseState;
   	}
     
 	@Override
@@ -51,6 +64,18 @@ public class Climber extends Subsystem {
 			break;
 		}
 		
+		switch(mClimberReleaseState) {
+		case RELEASED:
+			release(false);
+			break;
+		case UNRELEASED:
+			release(true);
+			break;
+		default:
+			mClimberReleaseState = ClimberReleaseState.UNRELEASED;
+			break;
+		}
+		
 		outputToSmartDashboard();
 		
 	}
@@ -66,6 +91,7 @@ public class Climber extends Subsystem {
 	@Override
 	public void stop(){
 		mClimberState = ClimberState.STOP;
+		mClimberReleaseState = ClimberReleaseState.UNRELEASED;
 	}
 	
 	public void hold(){
@@ -76,10 +102,15 @@ public class Climber extends Subsystem {
 		mClimberVictor.set(speed);
 	}
 	
+	private void release(boolean climbRelease) {
+		mClimberReleaseSolenoid.set(climbRelease);
+	}
+	
 	@Override
 	public void outputToSmartDashboard() {
 		SmartDashboard.putNumber("Climber_Speed", mClimberVictor.getSpeed());
-		SmartDashboard.putString("Climber_State", mClimberState.toString());
+		SmartDashboard.putString("Climber_Winch_State", mClimberState.toString());
+		SmartDashboard.putString("Climber_Release_State", mClimberReleaseState.toString());
 	}
 
 }

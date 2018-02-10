@@ -19,7 +19,7 @@ public class Laser extends Subsystem
 	private AnalogInput mLaserAnalog;
 	
 	public Laser() {
-		mLaserAnalog = HardwareMap.getInstance().mLaser;
+		mLaserAnalog = HardwareMap.getInstance().mLaserHardware;
 		System.out.println("Laser Initialized");
 		
 		LaserDistance = 0;
@@ -29,7 +29,7 @@ public class Laser extends Subsystem
 	public void updateSubsystem()
 	{
 
-		LaserVolts = HardwareMap.getInstance().mLaser.getVoltage() ;
+		LaserVolts = mLaserAnalog.getVoltage() ;
 		LaserDistance = (LaserVolts+39) / 0.1696 + 10;
 		// Math! ((volts + 39) / 0.1696 + 10);
 		

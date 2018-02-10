@@ -28,8 +28,8 @@ public class Constants {
 	//instake speed is negative for comp bot and positive for practice bot
 	
 	//Agitator
-    public static double kAgitatorFeedSpeed = -.50;
-    public static double kAgitatorReverseSpeed = .75;
+    //public static double kAgitatorFeedSpeed = -.50;
+    //public static double kAgitatorReverseSpeed = .75;
     
     //Feeder Wheel
 	public static double kFeederSpeed = -.55;
@@ -87,4 +87,5 @@ public class Constants {
 	public static int kIntakeSolenoidId = 3;
 	public static int kRampLeftSolenoidId = 4;
 	public static int kRampRightSolenoidId = 5;
+	public static int kClimberReleaseSolenoidId = 6;
 }

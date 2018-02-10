@@ -2,12 +2,12 @@ package com.team3418.frc2018;
 
 import com.team3418.frc2018.auto.AutoExecuter;
 import com.team3418.frc2018.plugins.MinionVision;
-import com.team3418.frc2018.subsystems.Agitator;
 import com.team3418.frc2018.subsystems.Climber;
 import com.team3418.frc2018.subsystems.Drivetrain;
 import com.team3418.frc2018.subsystems.Intake;
 import com.team3418.frc2018.subsystems.Laser;
 import com.team3418.frc2018.subsystems.MrGush;
+import com.team3418.frc2018.subsystems.Ramp;
 import com.team3418.frc2018.subsystems.Shooter;
 
 import edu.wpi.first.wpilibj.IterativeRobot;
@@ -20,13 +20,13 @@ public class Robot extends IterativeRobot {
 //	MinionVision mMinionVision;
 	
 	//initialize subsystems
-//	Agitator mAgitator;
 //	Climber mClimber;
 	Drivetrain mDrivetrain;
 //	Intake mIntake;
 //	Shooter mShooter;
 //	MrGush mMrGush;
 	Laser mLaser;
+//	Ramp mRamp;
 	
 	AutoExecuter mAutoExecuter = null;
 	
@@ -38,11 +38,11 @@ public class Robot extends IterativeRobot {
 //		mShooter.updateSubsystem();
 //		mMrGush.updateSubsystem();
 	    mLaser.updateSubsystem();
+//	    mRamp.updateSubsystem();
 	}
 	
 	public void stopAllSubsystems(){
 		
-//		mAgitator.stop();
 //		mClimber.stop();
 		mDrivetrain.stop();
 		mDrivetrain.lowGear();
@@ -51,6 +51,7 @@ public class Robot extends IterativeRobot {
 //		mShooter.stop();
 //		mMrGush.stop();
 		mLaser.stop();
+//		mRamp.stop();
 	}
 	
 	@Override
@@ -62,13 +63,13 @@ public class Robot extends IterativeRobot {
 //		mMinionVision = MinionVision.getInstance();
 //		mMinionVision.startVision();
 		
-//		mAgitator = Agitator.getInstance();
 //		mClimber = Climber.getInstance();
 		mDrivetrain = Drivetrain.getInstance();
 //		mIntake = Intake.getInstance();
 //		mShooter = Shooter.getInstance();
 //		mMrGush = MrGush.getInstance();
 		mLaser = Laser.getInstance();
+//		mRamp = Ramp.getInstance();
 //		
 //		mSmartDashboardInteractions.initWithDefaults();
 		

@@ -2,6 +2,7 @@ package com.team3418.frc2018.subsystems;
 
 import com.team3418.frc2018.Constants;
 import com.team3418.frc2018.HardwareMap;
+import com.team3418.frc2018.subsystems.Climber.ClimberReleaseState;
 
 import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
@@ -66,6 +67,6 @@ public class Ramp extends Subsystem
 	@Override
 	public void stop() {
 		// TODO Auto-generated method stub
-		
+		mRampState = RampState.LOW;
 	}
 }
