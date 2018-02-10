@@ -14,7 +14,7 @@ public class HardwareMap {
 		return mInstance;
 	}
 	
-	public Compressor mCompressor;
+	public Compressor mCompressorHardware;
 	public VictorSP mIntakeHardware;
 	public VictorSP mFeederHardware;
 	public VictorSP mClimberHardware;
@@ -36,7 +36,7 @@ public class HardwareMap {
 	    	mRightShifterHardware = new Solenoid(Constants.kRightShifterSolenoidId);
 //	    	mIntakeHardware = new VictorSP(Constants.kIntakeRollerId);
 //	    	mFeederHardware = new VictorSP(Constants.kFeederId);
-			mCompressor = new Compressor(0);
+			mCompressorHardware = new Compressor(0);
 //			mGyro = new ADXRS450_Gyro();
 //			mGyro.calibrate();
 			mLaserHardware = new AnalogInput(0);

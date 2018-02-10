@@ -47,6 +47,10 @@ public class Shooter extends Subsystem {
 		//
 		System.out.println("Left Front Shooter Done Initializing.");
 		
+		//Left Rear Talon Motor Controller
+		mLeftRearShooterTalon = new CANTalon(Constants.kLeftRearShooterMotorId);
+		System.out.println("Left Rear Shooter Done Initializing.");
+		
 		//Right Front Talon Motor Controller
 		mRightFrontShooterTalon = new CANTalon(Constants.kRightFrontShooterMotorId);
 		mRightFrontShooterTalon.setFeedbackDevice(FeedbackDevice.CtreMagEncoder_Relative);
@@ -70,6 +74,11 @@ public class Shooter extends Subsystem {
 		//mFeederSpeed = Constants.kFeederSpeed;
 		
 		System.out.println("Right Front Shooter Done Initializing.");
+		
+		//Right Rear Talon Motor Controller
+		mRightRearShooterTalon = new CANTalon(Constants.kRightRearShooterMotorId);
+		
+		System.out.println("Right Rear Shooter Done Initializing.");
 		System.out.println("Shooter Done Initializing.");
 	}
     
@@ -86,7 +95,6 @@ public class Shooter extends Subsystem {
     public enum ShooterState {
     	SHOOT, STOP
     }
-    
     
     //private double mFeederSpeed;
     private double mTargetShooterRpm;
