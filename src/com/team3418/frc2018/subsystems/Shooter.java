@@ -24,17 +24,17 @@ public class Shooter extends Subsystem {
 	CANTalon mRightRearShooterTalon;
 	VictorSP mFeederVictor;
 	
-	Agitator mAgitator;
+	//Agitator mAgitator;
     
     public Shooter() {
     	
-    	mAgitator = Agitator.getInstance();
+    	//mAgitator = Agitator.getInstance();
     	
     	//initialize shooter hardware settings
 		System.out.println("Shooter Initialized");
 		
 		//Feeder Talon motor controller
-		mFeederVictor= HardwareMap.getInstance().mFeederTalon;
+		mFeederVictor= HardwareMap.getInstance().mFeederHardware;
 		mFeederVictor.setInverted(true);
 		
 		//Left Front Talon Motor Controller
@@ -163,11 +163,11 @@ public class Shooter extends Subsystem {
 		if (bothIsOnTarget()){
 			mShooterReadyState = ShooterReadyState.READY;
 			feed();
-			mAgitator.feed();
+			//mAgitator.feed();
 		} else {
 			mShooterReadyState = ShooterReadyState.NOT_READY;
 			stopFeeder();
-			mAgitator.stop();
+			//mAgitator.stop();
 		}
 		
 		outputToSmartDashboard();
