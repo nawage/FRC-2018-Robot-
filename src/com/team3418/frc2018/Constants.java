@@ -73,10 +73,10 @@ public class Constants {
 	public static int kIntakeRightId = 5;
 	
 	//DIO (0-9)
-	public static int kLeftEncoderChannelA = 1;
-	public static int kLeftEncoderChannelB = 2;
-	public static int kRightEncoderChannelA = 3;
-	public static int kRightEncoderChannelB = 4;
+	public static int kLeftEncoderChannelA = 0;
+	public static int kLeftEncoderChannelB = 1;
+	public static int kRightEncoderChannelA = 2;
+	public static int kRightEncoderChannelB = 3;
 	
 	//SOLENOIDS (0-64)
 	public static int kLeftShifterSolenoidId = 0;
