@@ -17,7 +17,8 @@ public class Intake extends Subsystem
     
 	private CANTalon mIntakeLeftTalon;
 	private CANTalon mIntakeRightTalon;
-	private Solenoid mIntakeArmSolenoid;
+	private Solenoid mIntakeArmLeftSolenoid;
+	private Solenoid mIntakeArmRightSolenoid;
     
 	public Intake() {
 		mIntakeLeftTalon = new CANTalon(Constants.kIntakeLeftId);
@@ -26,7 +27,9 @@ public class Intake extends Subsystem
 		mIntakeRightTalon = new CANTalon(Constants.kIntakeRightId);
 		mIntakeRightTalon.reverseOutput(true);
 		
-		mIntakeArmSolenoid = new Solenoid(Constants.kIntakeSolenoidId);
+		mIntakeArmLeftSolenoid = new Solenoid(Constants.kIntakeLeftSolenoidId);
+		
+		mIntakeArmRightSolenoid = new Solenoid(Constants.kIntakeRightSolenoidId);
 		
 		System.out.println("Intake Done Initializing.");
 	}
@@ -109,7 +112,8 @@ public class Intake extends Subsystem
 	}
 	
 	private void setArmsOpen(boolean arms) {
-		mIntakeArmSolenoid.set(arms);
+		mIntakeArmLeftSolenoid.set(arms);
+		mIntakeArmRightSolenoid.set(arms);
 }
 
 	@Override

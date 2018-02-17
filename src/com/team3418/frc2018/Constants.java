@@ -83,10 +83,10 @@ public class Constants {
 	//SOLENOIDS (0-64)
 	public static int kLeftShifterSolenoidId = 0;
 	public static int kRightShifterSolenoidId = 1;
-	public static int kIntakeSolenoidId = 2;
-	public static int kRampLeftSolenoidId = 3;
-	public static int kRampRightSolenoidId = 4;
-	public static int kClimberReleaseSolenoidId = 5;
-	public static int kMrCushySolenoid = 6;
-	public static int kPopperSolenoidId = 7;
+	public static int kIntakeLeftSolenoidId = 2;
+	public static int kIntakeRightSolenoidId = 3;
+	public static int kRampLeftSolenoidId = 4;
+	public static int kRampRightSolenoidId = 5;
+	public static int kClimberReleaseSolenoidId = 6;
+	public static int kMrCushySolenoid = 7;
 }
