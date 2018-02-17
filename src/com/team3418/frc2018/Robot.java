@@ -70,7 +70,7 @@ public class Robot extends IterativeRobot {
 		mLaser = Laser.getInstance();
 //		mRamp = Ramp.getInstance();
 //		
-		mSmartDashboardInteractions.initWithDefaults();
+		//mSmartDashboardInteractions.initWithDefaults();
 		
 		stopAllSubsystems();
 	}

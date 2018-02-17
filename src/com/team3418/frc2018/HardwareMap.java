@@ -22,7 +22,7 @@ public class HardwareMap {
 	public Solenoid mRightShifterHardware;
 	public AnalogInput mLaserHardware;
 	public Solenoid mClimberReleaseHardware;
-	
+	public VictorSP mServoMotorHardware;
 	
 	
 	public ADXRS450_Gyro mGyro;	
@@ -41,7 +41,9 @@ public class HardwareMap {
 //			mGyro.calibrate();
 			mLaserHardware = new AnalogInput(0);
 //			mClimberReleaseHardware = new Solenoid(Constants.kClimberReleaseSolenoidId);
-			
+			mServoMotorHardware = new VictorSP(Constants.kServoMotorId);
+	
+//kkk
 
 		}
 		catch(Exception e)
