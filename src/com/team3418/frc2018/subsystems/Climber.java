@@ -102,7 +102,7 @@ public class Climber extends Subsystem {
 		mClimberVictor.set(speed);
 	}
 	
-	private void release(boolean climbRelease) {
+	public void release(boolean climbRelease) {
 		mClimberReleaseSolenoid.set(climbRelease);
 	}
 	

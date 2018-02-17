@@ -15,7 +15,8 @@ public class HardwareMap {
 	}
 	
 	public Compressor mCompressorHardware;
-	public VictorSP mIntakeHardware;
+	public VictorSP mIntakeLeftHardware;
+	public VictorSP mIntakeRightHardware;
 	public VictorSP mFeederHardware;
 	public VictorSP mClimberHardware;
 	public Solenoid mLeftShifterHardware;
@@ -31,19 +32,17 @@ public class HardwareMap {
 		
 		try
 		{
-//			mClimberHardware = new VictorSP(Constants.kClimberId);
+			mClimberHardware = new VictorSP(Constants.kClimberId);
 			mLeftShifterHardware = new Solenoid(Constants.kLeftShifterSolenoidId);
 	    	mRightShifterHardware = new Solenoid(Constants.kRightShifterSolenoidId);
-//	    	mIntakeHardware = new VictorSP(Constants.kIntakeRollerId);
-//	    	mFeederHardware = new VictorSP(Constants.kFeederId);
+	    	mIntakeLeftHardware = new VictorSP(Constants.kIntakeLeftId);
+	    	mIntakeRightHardware = new VictorSP(Constants.kIntakeRightId);
 			mCompressorHardware = new Compressor(0);
-//			mGyro = new ADXRS450_Gyro();
-//			mGyro.calibrate();
+			mGyro = new ADXRS450_Gyro();
+			mGyro.calibrate();
 			mLaserHardware = new AnalogInput(0);
-//			mClimberReleaseHardware = new Solenoid(Constants.kClimberReleaseSolenoidId);
+			mClimberReleaseHardware = new Solenoid(Constants.kClimberReleaseSolenoidId);
 			mServoMotorHardware = new VictorSP(Constants.kServoMotorId);
-	
-//kkk
 
 		}
 		catch(Exception e)

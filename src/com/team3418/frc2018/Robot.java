@@ -262,6 +262,7 @@ public class Robot extends IterativeRobot {
 		if(mControlBoard.getSecondaryArmCloseButton()){
 			mIntake.setArmsOpen(false); 
 		}
+		
 		//camera
 		if(mControlBoard.getSecondaryCam1Button()){
 			 
@@ -270,8 +271,10 @@ public class Robot extends IterativeRobot {
 			 
 		}
 		
-		
-		
+		//climber release
+		if(mControlBoard.getSecondaryArmCloseButton() && mControlBoard.getSwitchboardClimberRelease()){
+			mClimber.release(true);
+		}
 		
 		updateAllSubsystems();
 		

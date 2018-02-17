@@ -13,11 +13,13 @@ public class ControlBoard {
     //Create Joystick Object
     private final Joystick mDriverStick;
     private final Joystick mSecondaryDriverStick;
+    private final Joystick mSwitchboard;
     
     //Initialize Joystick Object
     ControlBoard() {
     	mDriverStick = new Joystick(0);
     	mSecondaryDriverStick = new Joystick(1);
+    	mSwitchboard = new Joystick(2);
     }
     
     //DRIVER CONTROLLER
@@ -115,5 +117,13 @@ public class ControlBoard {
     
     public boolean getSecondaryLowAimButton(){
     	return mSecondaryDriverStick.getRawButton(1);
+    }
+    
+    public boolean getSwitchboardClimberRelease(){
+    	return mSwitchboard.getRawButton(1);
+    }
+    
+    public boolean getSecondaryClimberRelease(){
+    	return mSecondaryDriverStick.getRawButton(2);
     }
 }
