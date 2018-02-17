@@ -111,7 +111,7 @@ public class Intake extends Subsystem
 		mIntakeRightTalon.set(-1*speed);
 	}
 	
-	private void setArmsOpen(boolean arms) {
+	public void setArmsOpen(boolean arms) {
 		mIntakeArmLeftSolenoid.set(arms);
 		mIntakeArmRightSolenoid.set(arms);
 }

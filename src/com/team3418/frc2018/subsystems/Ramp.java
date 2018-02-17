@@ -54,7 +54,7 @@ public class Ramp extends Subsystem
 		outputToSmartDashboard();
 	}
 	
-	private void setRampHigh(boolean arms) {
+	public void setRampHigh(boolean arms) {
 		mRampLeftSolenoid.set(arms);
 		mRampRightSolenoid.set(arms);
 }

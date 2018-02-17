@@ -17,40 +17,39 @@ public class Robot extends IterativeRobot {
 	HardwareMap mHardwareMap;
 	ControlBoard mControlBoard;
 	SmartDashboardInteractions mSmartDashboardInteractions;
-//	MinionVision mMinionVision;
+	MinionVision mMinionVision;
 	
 	//initialize subsystems
-//	Climber mClimber;
+	Climber mClimber;
 	Drivetrain mDrivetrain;
-//	Intake mIntake;
-//	Shooter mShooter;
-//	MrCush mMrGush;
+	Intake mIntake;
+	Shooter mShooter;
+	MrCush mMrCush;
 	Laser mLaser;
-//	Ramp mRamp;
+	Ramp mRamp;
 	
 	AutoExecuter mAutoExecuter = null;
 	
 	public void updateAllSubsystems(){
-//		mClimber.updateSubsystem();
+		mClimber.updateSubsystem();
 		mDrivetrain.updateSubsystem();
-//		mIntake.updateSubsystem();
-//		mShooter.updateSubsystem();
-//		mMrCush.updateSubsystem();
+		mIntake.updateSubsystem();
+		mShooter.updateSubsystem();
+		mMrCush.updateSubsystem();
 	    mLaser.updateSubsystem();
-//	    mRamp.updateSubsystem();
+	    mRamp.updateSubsystem();
 	}
 	
 	public void stopAllSubsystems(){
 		
-//		mClimber.stop();
+		mClimber.stop();
 		mDrivetrain.stop();
 		mDrivetrain.lowGear();
-//		mIntake.stop();
-//		mShooter.stopFeeder();
-//		mShooter.stop();
-//		mMrCush.stop();
+		mIntake.stop();
+		mShooter.stop();
+		mMrCush.stop();
 		mLaser.stop();
-//		mRamp.stop();
+		mRamp.stop();
 	}
 	
 	@Override
@@ -58,19 +57,19 @@ public class Robot extends IterativeRobot {
 		
 		mHardwareMap = HardwareMap.getInstance();
 		mControlBoard = ControlBoard.getInstance();
-//		mSmartDashboardInteractions = new SmartDashboardInteractions();
-//		mMinionVision = MinionVision.getInstance();
-//		mMinionVision.startVision();
+		mSmartDashboardInteractions = new SmartDashboardInteractions();
+		mMinionVision = MinionVision.getInstance();
+		mMinionVision.startVision();
 		
-//		mClimber = Climber.getInstance();
+		mClimber = Climber.getInstance();
 		mDrivetrain = Drivetrain.getInstance();
-//		mIntake = Intake.getInstance();
-//		mShooter = Shooter.getInstance();
-//		mMrCush = MrGush.getInstance();
+		mIntake = Intake.getInstance();
+		mShooter = Shooter.getInstance();
+		mMrCush = MrCush.getInstance();
 		mLaser = Laser.getInstance();
-//		mRamp = Ramp.getInstance();
-//		
-		//mSmartDashboardInteractions.initWithDefaults();
+		mRamp = Ramp.getInstance();
+		
+		mSmartDashboardInteractions.initWithDefaults();
 		
 		stopAllSubsystems();
 	}
@@ -155,11 +154,15 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void teleopPeriodic() {
 		//Intakes
-//		if(mControlBoard.getSecondaryIntakeButton()) {
-//			mIntake.intake();
-//		} else {
-//			mIntake.stop();
-//		}
+		if(mControlBoard.getSecondaryIntakeButton()) {
+			mIntake.intake();
+		} else if(mControlBoard.getSecondaryOutakeButton()){ 
+			mIntake.reverse();
+		}
+		else {
+			mIntake.stop();
+		}
+		
 		
 		
 		
@@ -168,26 +171,32 @@ public class Robot extends IterativeRobot {
 		//---------------------------------------------------------------//
 		
 		
-//		if (mControlBoard.getClimberForwardButton()) {
-//			mClimber.forward();
-//		} else if (mControlBoard.getClimberHoldButton()) {
-//			mClimber.hold();
-//		} else if (mControlBoard.getClimberReverseButton()) {
-//			mClimber.reverse();
-//		} else {
-//			mClimber.stop();
-//		}
+		if (mControlBoard.getClimberForwardButton()) {
+			mClimber.forward();
+		} else if (mControlBoard.getClimberHoldButton()) {
+			mClimber.hold();
+		} else if (mControlBoard.getClimberReverseButton()) {
+			mClimber.reverse();
+		} else {
+			mClimber.stop();
+		}
 		
 		
 
 		//-----------------------------------------------------------------
 		
 		//shooter
-//		if (mControlBoard.getSecondaryShootButton()) {
-//			mShooter.shoot();
-//		} else {
-//			mShooter.stop();
-//		}
+		if (mControlBoard.getSecondaryShootButton()) {
+			mMrCush.Retract();
+		} else {
+			mMrCush.Extend();
+		}
+		//Spool
+		if (mControlBoard.getSecondarySpoolButton()) {
+			mShooter.shoot();
+		} else {
+			mShooter.stop();
+		}
 		//---------------------------------------------------------------
 
 		//  Drive train 
@@ -199,7 +208,7 @@ public class Robot extends IterativeRobot {
 		}
 		
 		mDrivetrain.setTankDriveSpeed(mControlBoard.getDriverLeftY(), mControlBoard.getDriverRightY());
-		
+	/*	
 		if (mControlBoard.getDriverPov() > -1){
 			switch(mControlBoard.getDriverPov()){
 			//--------------------------------------------------
@@ -232,20 +241,36 @@ public class Robot extends IterativeRobot {
 				break;
 			//--------------------------------------------------
 			}
-		}
+		}*/
 		//---------------------------------------------------
 		
 		//Laser
 		mLaser.updateSubsystem();
 		
-		//MrGushy
+		//ramp
+		if(mControlBoard.getSecondaryHighAimButton()){
+			mRamp.setRampHigh(true) ;
+		}
+		if(mControlBoard.getSecondaryHighAimButton()){
+			mRamp.setRampHigh(false) ;
+		}
 		
-//		if (mControlBoard.getDriverLeftTrigger() || mControlBoard.getDriverRightTrigger()) {
-//			mMrGush.Extend();
-//			System.out.println("extend my gushy");
-//		} else {
-//			mMrGush.Retract();
-//		}
+		//arms
+		if(mControlBoard.getSecondaryArmOpenButton()){
+			mIntake.setArmsOpen(true); 
+		}
+		if(mControlBoard.getSecondaryArmCloseButton()){
+			mIntake.setArmsOpen(false); 
+		}
+		//camera
+		if(mControlBoard.getSecondaryCam1Button()){
+			 
+		}
+		if(mControlBoard.getSecondaryCam2Button()){
+			 
+		}
+		
+		
 		
 		
 		updateAllSubsystems();
