@@ -25,15 +25,6 @@ public class Constants {
     //Intake Roller
     public static double kRollerIntakeSpeed = .75;
 	public static double kRollerReverseSpeed = -1;
-	//instake speed is negative for comp bot and positive for practice bot
-	
-	//Agitator
-    //public static double kAgitatorFeedSpeed = -.50;
-    //public static double kAgitatorReverseSpeed = .75;
-    
-    //Feeder Wheel
-	public static double kFeederSpeed = -.55;
-	//feeder speed is negative for comp bot and positive for practice bot
     
 	//Climber
 	public static double kClimberReverseSpeed = -.5;
@@ -46,10 +37,7 @@ public class Constants {
 	//-Autonomous-//
 	//-----------//
 	
-	
-	
-	
-	
+
 	//--------------------------//
 	//-static port assignments-//
 	//------------------------//

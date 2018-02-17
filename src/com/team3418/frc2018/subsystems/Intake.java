@@ -75,10 +75,10 @@ public class Intake extends Subsystem
 		
 		switch(mIntakeArmState) {
 		case OPEN:
-			setArmsOpen(true);
+			setArmsOpen(false);
 			break;
 		case CLOSED:
-			setArmsOpen(false);
+			setArmsOpen(true);
 			break;
 		default:
 			mIntakeArmState = IntakeArmState.OPEN;
