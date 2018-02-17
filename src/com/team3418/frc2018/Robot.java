@@ -153,6 +153,7 @@ public class Robot extends IterativeRobot {
 	
 	@Override
 	public void teleopPeriodic() {
+		
 		//Intakes
 		if(mControlBoard.getSecondaryIntakeButton()) {
 			mIntake.intake();
@@ -163,14 +164,7 @@ public class Robot extends IterativeRobot {
 			mIntake.stop();
 		}
 		
-		
-		
-		
-		
-		
-		//---------------------------------------------------------------//
-		
-		
+		//Climber
 		if (mControlBoard.getClimberForwardButton()) {
 			mClimber.forward();
 		} else if (mControlBoard.getClimberHoldButton()) {
@@ -181,73 +175,33 @@ public class Robot extends IterativeRobot {
 			mClimber.stop();
 		}
 		
-		
-
-		//-----------------------------------------------------------------
-		
-		//shooter
+		//Shooter Popper
 		if (mControlBoard.getSecondaryShootButton()) {
 			mMrCush.Retract();
 		} else {
 			mMrCush.Extend();
 		}
-		//Spool
+		
+		//Shooter Spool
 		if (mControlBoard.getSecondarySpoolButton()) {
 			mShooter.shoot();
 		} else {
 			mShooter.stop();
 		}
-		//---------------------------------------------------------------
 
-		//  Drive train 
+		//Drive train 
 		if(mControlBoard.getDriverHighGearButton()) {
 			mDrivetrain.highGear();
 		}
 		if(mControlBoard.getDriverLowGearButton()) {
 			mDrivetrain.lowGear();
 		}
-		
 		mDrivetrain.setTankDriveSpeed(mControlBoard.getDriverLeftY(), mControlBoard.getDriverRightY());
-	/*	
-		if (mControlBoard.getDriverPov() > -1){
-			switch(mControlBoard.getDriverPov()){
-			//--------------------------------------------------
-			case 0: //forwards
-				mDrivetrain.setArcadeDriveSpeed(.5, 0);
-				break;
-			case 180:// back
-				mDrivetrain.setArcadeDriveSpeed(-.5, 0);
-				break;
-			//--------------------------------------------------
-			case 45: // forwards / right
-				mDrivetrain.setArcadeDriveSpeed(.5, .25);
-				break;
-			case 315: // forwards / left
-				mDrivetrain.setArcadeDriveSpeed(.5, -.25);
-				break;
-			//--------------------------------------------------
-			case 90:// right
-				mDrivetrain.setArcadeDriveSpeed(0, .5);
-				break;
-			case 270: //left
-				mDrivetrain.setArcadeDriveSpeed(0, -.5);
-				break;
-			//--------------------------------------------------
-			case 135:// back / right
-				mDrivetrain.setArcadeDriveSpeed(-.5, -.25);
-				break;
-			case 225:// back / left
-				mDrivetrain.setArcadeDriveSpeed(-.5, .25);
-				break;
-			//--------------------------------------------------
-			}
-		}*/
-		//---------------------------------------------------
 		
 		//Laser
 		mLaser.updateSubsystem();
 		
-		//ramp
+		//Ramp Aim
 		if(mControlBoard.getSecondaryHighAimButton()){
 			mRamp.setRampHigh(true) ;
 		}
@@ -255,7 +209,7 @@ public class Robot extends IterativeRobot {
 			mRamp.setRampHigh(false) ;
 		}
 		
-		//arms
+		//Intake Arms
 		if(mControlBoard.getSecondaryArmOpenButton()){
 			mIntake.setArmsOpen(true); 
 		}
@@ -263,7 +217,7 @@ public class Robot extends IterativeRobot {
 			mIntake.setArmsOpen(false); 
 		}
 		
-		//camera
+		//Cameras
 		if(mControlBoard.getSecondaryCam1Button()){
 			 
 		}
@@ -271,7 +225,7 @@ public class Robot extends IterativeRobot {
 			 
 		}
 		
-		//climber release
+		//Climber Release (with double safety switch)
 		if(mControlBoard.getSecondaryArmCloseButton() && mControlBoard.getSwitchboardClimberRelease()){
 			mClimber.release(true);
 		}

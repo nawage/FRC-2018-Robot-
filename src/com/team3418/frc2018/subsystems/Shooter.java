@@ -22,7 +22,6 @@ public class Shooter extends Subsystem {
 	CANTalon mLeftRearShooterTalon;
 	CANTalon mRightFrontShooterTalon;
 	CANTalon mRightRearShooterTalon;
-	//VictorSP mFeederVictor;
     
     public Shooter() {
 		
@@ -71,7 +70,6 @@ public class Shooter extends Subsystem {
 		mRightFrontShooterTalon.setAllowableClosedLoopErr(Constants.kFlywheelAllowableError);		
 		
 		mTargetShooterRpm = Constants.kTargetShooterRpm;
-		//mFeederSpeed = Constants.kFeederSpeed;
 		
 		System.out.println("Right Front Shooter Done Initializing.");
 		
@@ -86,17 +84,10 @@ public class Shooter extends Subsystem {
     	READY, NOT_READY
     }
     
-    /*
-    public enum FeederState {
-    	FEED, STOP
-    }
-    */
-    
     public enum ShooterState {
     	SHOOT, STOP
     }
     
-    //private double mFeederSpeed;
     private double mTargetShooterRpm;
     
     public void setTargetShooterRpm(double rpm){
@@ -107,30 +98,12 @@ public class Shooter extends Subsystem {
     	return mTargetShooterRpm;
     }
     
-    /*
-    public void setTargetFeederSpeed(double speed){
-    	mFeederSpeed = speed;
-    }
-    
-    public double getTargetFeederSpeed(){
-    	return mFeederSpeed;
-    }
-    */
-    
-    
     private ShooterReadyState mShooterReadyState;
     private ShooterState mShooterState;
-    //private FeederState mFeederState;
     
     public ShooterState getShooterState(){
     	return mShooterState;
     }
-    
-    /*
-    public FeederState getFeederState(){
-    	return mFeederState;
-    }
-    */
     
     public ShooterReadyState getShooterReadyState(){
     	return mShooterReadyState;
@@ -151,26 +124,10 @@ public class Shooter extends Subsystem {
 			break;
 		}
 		
-		/*
-		switch(mFeederState){
-		case FEED:
-			setFeederOpenLoop(Constants.kFeederSpeed);
-			break;
-		case STOP:
-			setFeederOpenLoop(0);
-			break;
-		default:
-			stopFeeder();
-			break;
-		}
-		*/
-		
 		if (bothIsOnTarget()){
 			mShooterReadyState = ShooterReadyState.READY;
-			//feed();
 		} else {
 			mShooterReadyState = ShooterReadyState.NOT_READY;
-			//stopFeeder();
 		}
 		
 		outputToSmartDashboard();
@@ -185,16 +142,6 @@ public class Shooter extends Subsystem {
 	public void stop(){
 		mShooterState = ShooterState.STOP;
 	}
-	
-	/*
-	public void feed(){
-		mFeederState = FeederState.FEED;
-	}
-	
-	public void stopFeeder(){
-		mFeederState = FeederState.STOP;
-	}
-	*/
 	
 	//get shooter speed info
 	private double getLeftFrontRpm(){
@@ -245,13 +192,6 @@ public class Shooter extends Subsystem {
 		mRightFrontShooterTalon.set(speed);
 	}
 	
-	/*
-	public void setFeederOpenLoop(double speed){
-		mFeederVictor.set(speed);
-	}
-	*/
-	//
-	
 	//set shooter ready state
 	private boolean leftIsOnTarget(){
 		return (mLeftFrontShooterTalon.getControlMode() == CANTalon.TalonControlMode.Speed
@@ -270,7 +210,6 @@ public class Shooter extends Subsystem {
     public boolean isShooterReady(){
     	return bothIsOnTarget();
     }
-	//
 	
 	@Override
 	public void outputToSmartDashboard() {
@@ -282,10 +221,8 @@ public class Shooter extends Subsystem {
 		SmartDashboard.putNumber("LeftRear_Flywheel_rpm", getLeftRearRpm());
 		SmartDashboard.putNumber("RightFront_Flywheel_rpm", getRightFrontRpm());
 		SmartDashboard.putNumber("RightRear_Flywheel_rpm", getRightRearRpm());
-        //SmartDashboard.putNumber("Feeder_Speed", mFeederVictor.getSpeed());
 		
 		SmartDashboard.putNumber("Target_Shooter_rpm", getTargetShooterRpm());
-		//SmartDashboard.putNumber("Target_Feeder_Speed", getTargetFeederSpeed());
         
         SmartDashboard.putNumber("LeftFront_Flywheel_Closed_Loop_error", mLeftFrontShooterTalon.getClosedLoopError());
         SmartDashboard.putNumber("LeftFront_Flywheel_Closed_Loop_error_Number", mLeftFrontShooterTalon.getClosedLoopError());
@@ -298,6 +235,5 @@ public class Shooter extends Subsystem {
         
         SmartDashboard.putString("Shooter_State", mShooterState.toString());
         SmartDashboard.putString("ShooterReady_State", mShooterReadyState.toString());
-        //SmartDashboard.putString("Feeder_State", mFeederState.toString());
 	}
 }
