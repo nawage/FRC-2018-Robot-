@@ -67,12 +67,11 @@ public class Constants {
 	public static int kIntakeLeftId = 6;
 	public static int kIntakeRightId = 7;
 	
-	public static int kLeftRearShooterMotorId = 8;
-	public static int kRightRearShooterMotorId = 9;
-	
 	//CAN (0-64)
 	public static int kLeftFrontShooterMotorId = 0;
-	public static int kRightFrontShooterMotorId = 1;
+	public static int kLeftRearShooterMotorId = 1;
+	public static int kRightFrontShooterMotorId = 2;
+	public static int kRightRearShooterMotorId = 3;
 	
 	//DIO (0-9)
 	public static int kLeftEncoderChannelA = 0;

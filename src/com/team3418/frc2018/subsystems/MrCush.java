@@ -43,7 +43,7 @@ public class MrCush extends Subsystem {
 			setRetract();
 			break;
 		default:
-			setRetract();
+			MrCushState = MrCushState.EXTENDED;
 			break;
 		}
 		

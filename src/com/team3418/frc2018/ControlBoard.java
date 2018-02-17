@@ -20,13 +20,10 @@ public class ControlBoard {
     	mSecondaryDriverStick = new Joystick(1);
     }
     
-    //DRIVER CONTROLS
+    //DRIVER CONTROLLER
     
     //drive controls
     public double getDriverLeftX(){
-    	
-    	
-    	
     	return mDriverStick.getRawAxis(0);
     }
     
@@ -64,28 +61,59 @@ public class ControlBoard {
     }
     //
     
-    //SECONDARY CONTROLS
+    //SECONDARY CONTROLLER
     
     //secondary functional controls
 
     public boolean getClimberForwardButton(){
-    	return mSecondaryDriverStick.getRawButton(6);
+    	return mSecondaryDriverStick.getRawButton(3);
     }
 
     public boolean getClimberHoldButton(){
-    	return mSecondaryDriverStick.getRawButton(5);
+    	return mSecondaryDriverStick.getRawButton(8);
     }
     
     public boolean getClimberReverseButton(){
-    	return mSecondaryDriverStick.getRawAxis(2) > .1;
+    	return mSecondaryDriverStick.getRawButton(7);
     }
     
-    
     public boolean getSecondaryIntakeButton(){
-    	return mSecondaryDriverStick.getRawButton(1);
+    	return mSecondaryDriverStick.getRawAxis(1) > .2;
+    }
+    
+    public boolean getSecondaryOutakeButton(){
+    	return mSecondaryDriverStick.getRawAxis(1) < -.2;
+    }
+    
+    public boolean getSecondarySpoolButton(){
+    	return mSecondaryDriverStick.getRawButton(6);
     }
     
     public boolean getSecondaryShootButton(){
     	return mSecondaryDriverStick.getRawAxis(3) > .1;
+    }
+    
+    public boolean getSecondaryCam1Button(){
+    	return mSecondaryDriverStick.getRawButton(5);
+    }
+    
+    public boolean getSecondaryCam2Button(){
+    	return mSecondaryDriverStick.getRawAxis(2) > .1;
+    }
+    
+    public boolean getSecondaryArmOpenButton(){
+    	return mSecondaryDriverStick.getRawAxis(4) > .2;
+    }
+    
+    public boolean getSecondaryArmCloseButton(){
+    	return mSecondaryDriverStick.getRawAxis(4) < -.2;
+    }
+    
+    public boolean getSecondaryHighAimButton(){
+    	return mSecondaryDriverStick.getRawButton(4);
+    }
+    
+    public boolean getSecondaryLowAimButton(){
+    	return mSecondaryDriverStick.getRawButton(1);
     }
 }
