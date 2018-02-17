@@ -17,7 +17,7 @@ public class Laser extends Subsystem
 	}
 	
 	private VictorSP mServoMotor;
-	private AnalogInput mLaserAnalog;
+	//private AnalogInput mLaserAnalog;
 	
 	public ServoState getServoState() {
   		return mServoState;

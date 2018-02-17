@@ -1,7 +1,6 @@
 package com.team3418.frc2018.subsystems;
 
 import com.team3418.frc2018.Constants;
-import com.team3418.frc2018.HardwareMap;
 import com.ctre.CANTalon;
 
 import edu.wpi.first.wpilibj.Solenoid;
