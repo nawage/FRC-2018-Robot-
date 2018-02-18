@@ -88,6 +88,10 @@ public class Climber extends Subsystem {
 		mClimberState = ClimberState.REVERSE;
 	}
 	
+	public void Release(){
+		mClimberReleaseState = ClimberReleaseState.RELEASED;
+	}
+	
 	@Override
 	public void stop(){
 		mClimberState = ClimberState.STOP;

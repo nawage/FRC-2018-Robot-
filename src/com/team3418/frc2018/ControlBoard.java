@@ -61,6 +61,23 @@ public class ControlBoard {
     public boolean getDriverLeftTrigger() {
     	return mDriverStick.getRawAxis(2) > .1;
     }
+    
+    public boolean getPovUp(){
+    	return mSecondaryDriverStick.getPOV(0)==0 || mSecondaryDriverStick.getPOV(0)==45||mSecondaryDriverStick.getPOV(0)==315;
+    	
+    }
+    public boolean getPovRight(){
+    	return mSecondaryDriverStick.getPOV(0)==90 || mSecondaryDriverStick.getPOV(0)==45||mSecondaryDriverStick.getPOV(0)==135;
+    	
+    }
+    public boolean getPovDown(){
+    	return mSecondaryDriverStick.getPOV(0)==180 || mSecondaryDriverStick.getPOV(0)==135||mSecondaryDriverStick.getPOV(0)==225;
+    	
+    }
+    public boolean getPovLeft(){
+    	return mSecondaryDriverStick.getPOV(0)==270 || mSecondaryDriverStick.getPOV(0)==315||mSecondaryDriverStick.getPOV(0)==225;
+    	
+    }
     //
     
     //SECONDARY CONTROLLER
@@ -104,11 +121,11 @@ public class ControlBoard {
     }
     
     public boolean getSecondaryArmOpenButton(){
-    	return mSecondaryDriverStick.getRawAxis(4) > .2;
+    	return mSecondaryDriverStick.getRawAxis(4) > .8;
     }
     
     public boolean getSecondaryArmCloseButton(){
-    	return mSecondaryDriverStick.getRawAxis(4) < -.2;
+    	return mSecondaryDriverStick.getRawAxis(4) < -.8;
     }
     
     public boolean getSecondaryHighAimButton(){

@@ -5,10 +5,11 @@ import com.team3418.frc2018.plugins.MinionVision;
 import com.team3418.frc2018.subsystems.Climber;
 import com.team3418.frc2018.subsystems.Drivetrain;
 import com.team3418.frc2018.subsystems.Intake;
-import com.team3418.frc2018.subsystems.Laser;
+//import com.team3418.frc2018.subsystems.Laser;
 import com.team3418.frc2018.subsystems.MrCush;
 import com.team3418.frc2018.subsystems.Ramp;
 import com.team3418.frc2018.subsystems.Shooter;
+import com.team3418.frc2018.subsystems.Intake.IntakeArmState;
 
 import edu.wpi.first.wpilibj.IterativeRobot;
 
@@ -25,7 +26,7 @@ public class Robot extends IterativeRobot {
 	Intake mIntake;
 	Shooter mShooter;
 	MrCush mMrCush;
-	Laser mLaser;
+	//Laser mLaser;
 	Ramp mRamp;
 	
 	AutoExecuter mAutoExecuter = null;
@@ -36,7 +37,7 @@ public class Robot extends IterativeRobot {
 		mIntake.updateSubsystem();
 		mShooter.updateSubsystem();
 		mMrCush.updateSubsystem();
-	    mLaser.updateSubsystem();
+	    //mLaser.updateSubsystem();
 	    mRamp.updateSubsystem();
 	}
 	
@@ -48,7 +49,7 @@ public class Robot extends IterativeRobot {
 		mIntake.stop();
 		mShooter.stop();
 		mMrCush.stop();
-		mLaser.stop();
+		//mLaser.stop();
 		mRamp.stop();
 	}
 	
@@ -58,15 +59,15 @@ public class Robot extends IterativeRobot {
 		mHardwareMap = HardwareMap.getInstance();
 		mControlBoard = ControlBoard.getInstance();
 		mSmartDashboardInteractions = new SmartDashboardInteractions();
-		mMinionVision = MinionVision.getInstance();
-		mMinionVision.startVision();
+//		mMinionVision = MinionVision.getInstance();
+//		mMinionVision.startVision();
 		
 		mClimber = Climber.getInstance();
 		mDrivetrain = Drivetrain.getInstance();
 		mIntake = Intake.getInstance();
 		mShooter = Shooter.getInstance();
 		mMrCush = MrCush.getInstance();
-		mLaser = Laser.getInstance();
+		//mLaser = Laser.getInstance();
 		mRamp = Ramp.getInstance();
 		
 		mSmartDashboardInteractions.initWithDefaults();
@@ -161,7 +162,7 @@ public class Robot extends IterativeRobot {
 			mIntake.reverse();
 		}
 		else {
-			mIntake.stop();
+			mIntake.stopIntakeMotor();
 		}
 		
 		//Climber
@@ -199,23 +200,24 @@ public class Robot extends IterativeRobot {
 		mDrivetrain.setTankDriveSpeed(mControlBoard.getDriverLeftY(), mControlBoard.getDriverRightY());
 		
 		//Laser
-		mLaser.updateSubsystem();
+		//mLaser.updateSubsystem();
 		
 		//Ramp Aim
 		if(mControlBoard.getSecondaryHighAimButton()){
-			mRamp.setRampHigh(true) ;
+			mRamp.high() ;
 		}
-		if(mControlBoard.getSecondaryHighAimButton()){
-			mRamp.setRampHigh(false) ;
+		if(mControlBoard.getSecondaryLowAimButton()){
+			mRamp.low() ;
 		}
 		
 		//Intake Arms
 		if(mControlBoard.getSecondaryArmOpenButton()){
-			mIntake.setArmsOpen(true); 
+			mIntake.open();
 		}
 		if(mControlBoard.getSecondaryArmCloseButton()){
-			mIntake.setArmsOpen(false); 
+			mIntake.close();
 		}
+		
 		
 		//Cameras
 		if(mControlBoard.getSecondaryCam1Button()){
@@ -227,7 +229,7 @@ public class Robot extends IterativeRobot {
 		
 		//Climber Release (with double safety switch)
 		if(mControlBoard.getSecondaryArmCloseButton() && mControlBoard.getSwitchboardClimberRelease()){
-			mClimber.release(true);
+			mClimber.Release();
 		}
 		
 		updateAllSubsystems();

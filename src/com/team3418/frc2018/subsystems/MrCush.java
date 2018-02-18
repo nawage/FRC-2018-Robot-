@@ -14,7 +14,7 @@ public class MrCush extends Subsystem {
     }
     
 	public MrCush() {
-		//MrCushySolenoid = new Solenoid(Constants.kMrCushySolenoid);
+		MrCushySolenoid = new Solenoid(Constants.kMrCushySolenoid);
 		System.out.println("Mr Cushy has been initialized :D");
 	}
 
@@ -73,6 +73,6 @@ public class MrCush extends Subsystem {
 
 	@Override
 	public void stop() {
-		Retract();
+		Extend();
 	}
 }

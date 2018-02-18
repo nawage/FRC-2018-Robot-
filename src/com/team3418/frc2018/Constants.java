@@ -23,7 +23,7 @@ public class Constants {
 	//-----------------------------//
     
     //Intake Roller
-    public static double kRollerIntakeSpeed = .75;
+    public static double kRollerIntakeSpeed = 1;
 	public static double kRollerReverseSpeed = -1;
     
 	//Climber
@@ -56,10 +56,10 @@ public class Constants {
 	public static int kIntakeRightId = 7;
 	
 	//CAN (0-64)
-	public static int kLeftFrontShooterMotorId = 0;
-	public static int kLeftRearShooterMotorId = 1;
-	public static int kRightFrontShooterMotorId = 2;
-	public static int kRightRearShooterMotorId = 3;
+	public static int kLeftFrontShooterMotorId = 5;
+	public static int kLeftRearShooterMotorId = 6;
+	public static int kRightFrontShooterMotorId = 3;
+	public static int kRightRearShooterMotorId = 4;
 	
 	//DIO (0-9)
 	public static int kLeftEncoderChannelA = 0;
@@ -70,10 +70,10 @@ public class Constants {
 	//SOLENOIDS (0-64)
 	public static int kLeftShifterSolenoidId = 0;
 	public static int kRightShifterSolenoidId = 1;
-	public static int kIntakeLeftSolenoidId = 2;
-	public static int kIntakeRightSolenoidId = 3;
-	public static int kRampLeftSolenoidId = 4;
-	public static int kRampRightSolenoidId = 5;
-	public static int kClimberReleaseSolenoidId = 6;
-	public static int kMrCushySolenoid = 7;
+	public static int kIntakeLeftSolenoidId = 5; //012345
+	public static int kIntakeRightSolenoidId = 4; //
+	public static int kRampLeftSolenoidId = 2;
+	public static int kRampRightSolenoidId = 3;
+	public static int kClimberReleaseSolenoidId = 6; //not use
+	public static int kMrCushySolenoid = 7; //not use
 }

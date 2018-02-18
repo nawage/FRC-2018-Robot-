@@ -37,7 +37,7 @@ public class Drivetrain extends Subsystem {
 //    	hi
     	mLeftSolenoid = HardwareMap.getInstance().mLeftShifterHardware;
     	mRightSolenoid = HardwareMap.getInstance().mRightShifterHardware;
-    	mLaserInput = HardwareMap.getInstance().mLaserHardware;
+    	//mLaserInput = HardwareMap.getInstance().mLaserHardware;
     	
     	mDrive = new RobotDrive(Constants.kLeftFrontMotorId,
     							Constants.kLeftRearMotorId,
@@ -144,6 +144,6 @@ public class Drivetrain extends Subsystem {
 		SmartDashboard.putNumber("DriveTrain_RotateValue", mRotateSpeed);
 		SmartDashboard.putNumber("Right_Drivetrain_Encoder_Distance", mRightEncoder.getDistance());
 		SmartDashboard.putString("Drive_Gear", mDriveGear.toString());
-		SmartDashboard.putString("Laser Distance", mLaserInput.toString());
+		//SmartDashboard.putString("Laser Distance", mLaserInput.toString());
 	}
 }

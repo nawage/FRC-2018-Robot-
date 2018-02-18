@@ -27,12 +27,12 @@ public class Shooter extends Subsystem {
 		
 		//Left Front Talon Motor Controller
 		mLeftFrontShooterTalon = new CANTalon(Constants.kLeftFrontShooterMotorId);		
-		mLeftFrontShooterTalon.setFeedbackDevice(FeedbackDevice.CtreMagEncoder_Relative);
+//		mLeftFrontShooterTalon.setFeedbackDevice(FeedbackDevice.CtreMagEncoder_Relative);
 		mLeftFrontShooterTalon.changeControlMode(TalonControlMode.PercentVbus);
 		mLeftFrontShooterTalon.set(0);
-		mLeftFrontShooterTalon.setPID(Constants.kFlywheelKp, Constants.kFlywheelKi, Constants.kFlywheelKd, Constants.kFlywheelKf,
-                Constants.kFlywheelIZone, Constants.kFlywheelRampRate, 0);
-		mLeftFrontShooterTalon.setProfile(0);
+//		mLeftFrontShooterTalon.setPID(Constants.kFlywheelKp, Constants.kFlywheelKi, Constants.kFlywheelKd, Constants.kFlywheelKf,
+//                Constants.kFlywheelIZone, Constants.kFlywheelRampRate, 0);
+//		mLeftFrontShooterTalon.setProfile(0);
 		mLeftFrontShooterTalon.reverseSensor(false);
 		mLeftFrontShooterTalon.reverseOutput(false);
 		
@@ -42,22 +42,38 @@ public class Shooter extends Subsystem {
 		
 		mLeftFrontShooterTalon.configNominalOutputVoltage(+0.0f, -0.0f);
 		mLeftFrontShooterTalon.configPeakOutputVoltage(+12.0f, -0.0f);
-		mLeftFrontShooterTalon.setAllowableClosedLoopErr(Constants.kFlywheelAllowableError);	
+//		mLeftFrontShooterTalon.setAllowableClosedLoopErr(Constants.kFlywheelAllowableError);	
 		//
 		System.out.println("Left Front Shooter Done Initializing.");
 		
 		//Left Rear Talon Motor Controller
 		mLeftRearShooterTalon = new CANTalon(Constants.kLeftRearShooterMotorId);
+//		mLeftRearShooterTalon.setFeedbackDevice(FeedbackDevice.CtreMagEncoder_Relative);
+		mLeftRearShooterTalon.changeControlMode(TalonControlMode.PercentVbus);
+		mLeftRearShooterTalon.set(0);
+//		mLeftRearShooterTalon.setPID(Constants.kFlywheelKp, Constants.kFlywheelKi, Constants.kFlywheelKd, Constants.kFlywheelKf,
+//                Constants.kFlywheelIZone, Constants.kFlywheelRampRate, 0);
+//		mLeftRearShooterTalon.setProfile(0);
+		mLeftRearShooterTalon.reverseSensor(false);
+		mLeftRearShooterTalon.reverseOutput(false);
+		
+		mLeftRearShooterTalon.setVoltageRampRate(0);
+		mLeftRearShooterTalon.enableBrakeMode(false);
+		mLeftRearShooterTalon.clearStickyFaults();
+		
+		mLeftRearShooterTalon.configNominalOutputVoltage(+0.0f, -0.0f);
+		mLeftRearShooterTalon.configPeakOutputVoltage(+12.0f, -0.0f);
+//		mLeftRearShooterTalon.setAllowableClosedLoopErr(Constants.kFlywheelAllowableError);
 		System.out.println("Left Rear Shooter Done Initializing.");
 		
 		//Right Front Talon Motor Controller
 		mRightFrontShooterTalon = new CANTalon(Constants.kRightFrontShooterMotorId);
-		mRightFrontShooterTalon.setFeedbackDevice(FeedbackDevice.CtreMagEncoder_Relative);
+//		mRightFrontShooterTalon.setFeedbackDevice(FeedbackDevice.CtreMagEncoder_Relative);
 		mRightFrontShooterTalon.changeControlMode(TalonControlMode.PercentVbus);
 		mRightFrontShooterTalon.set(0);
-		mRightFrontShooterTalon.setPID(Constants.kFlywheelKp, Constants.kFlywheelKi, Constants.kFlywheelKd, Constants.kFlywheelKf,
-                Constants.kFlywheelIZone, Constants.kFlywheelRampRate, 0);
-		mRightFrontShooterTalon.setProfile(0);
+//		mRightFrontShooterTalon.setPID(Constants.kFlywheelKp, Constants.kFlywheelKi, Constants.kFlywheelKd, Constants.kFlywheelKf,
+//                Constants.kFlywheelIZone, Constants.kFlywheelRampRate, 0);
+//		mRightFrontShooterTalon.setProfile(0);
 		mRightFrontShooterTalon.reverseSensor(true);
 		mRightFrontShooterTalon.reverseOutput(true);
 		
@@ -67,7 +83,7 @@ public class Shooter extends Subsystem {
 		
 		mRightFrontShooterTalon.configNominalOutputVoltage(+0.0f, -0.0f);
 		mRightFrontShooterTalon.configPeakOutputVoltage(+.0f, -12.0f);
-		mRightFrontShooterTalon.setAllowableClosedLoopErr(Constants.kFlywheelAllowableError);		
+//		mRightFrontShooterTalon.setAllowableClosedLoopErr(Constants.kFlywheelAllowableError);		
 		
 		mTargetShooterRpm = Constants.kTargetShooterRpm;
 		
@@ -75,7 +91,22 @@ public class Shooter extends Subsystem {
 		
 		//Right Rear Talon Motor Controller
 		mRightRearShooterTalon = new CANTalon(Constants.kRightRearShooterMotorId);
+//		mRightRearShooterTalon.setFeedbackDevice(FeedbackDevice.CtreMagEncoder_Relative);
+		mRightRearShooterTalon.changeControlMode(TalonControlMode.PercentVbus);
+		mRightRearShooterTalon.set(0);
+//		mRightRearShooterTalon.setPID(Constants.kFlywheelKp, Constants.kFlywheelKi, Constants.kFlywheelKd, Constants.kFlywheelKf,
+//                Constants.kFlywheelIZone, Constants.kFlywheelRampRate, 0);
+//		mRightRearShooterTalon.setProfile(0);
+		mRightRearShooterTalon.reverseSensor(true);
+		mRightRearShooterTalon.reverseOutput(true);
 		
+		mRightRearShooterTalon.setVoltageRampRate(0);
+		mRightRearShooterTalon.enableBrakeMode(false);
+		mRightRearShooterTalon.clearStickyFaults();
+		
+		mRightRearShooterTalon.configNominalOutputVoltage(+0.0f, -0.0f);
+		mRightRearShooterTalon.configPeakOutputVoltage(+.0f, -12.0f);
+//		mRightRearShooterTalon.setAllowableClosedLoopErr(Constants.kFlywheelAllowableError);
 		System.out.println("Right Rear Shooter Done Initializing.");
 		System.out.println("Shooter Done Initializing.");
 	}
@@ -183,6 +214,10 @@ public class Shooter extends Subsystem {
 		mLeftFrontShooterTalon.set(rpm);
 		mRightFrontShooterTalon.changeControlMode(TalonControlMode.Speed);
 		mRightFrontShooterTalon.set(rpm);
+		mLeftRearShooterTalon.changeControlMode(TalonControlMode.Speed);
+		mLeftRearShooterTalon.set(rpm);
+		mRightRearShooterTalon.changeControlMode(TalonControlMode.Speed);
+		mRightRearShooterTalon.set(rpm);
 	}
 	
 	public void setShooterOpenLoop(double speed){
@@ -190,6 +225,10 @@ public class Shooter extends Subsystem {
 		mLeftFrontShooterTalon.set(speed);
 		mRightFrontShooterTalon.changeControlMode(TalonControlMode.PercentVbus);
 		mRightFrontShooterTalon.set(speed);
+		mLeftRearShooterTalon.changeControlMode(TalonControlMode.PercentVbus);
+		mLeftRearShooterTalon.set(speed);
+		mRightRearShooterTalon.changeControlMode(TalonControlMode.PercentVbus);
+		mRightRearShooterTalon.set(speed);
 	}
 	
 	//set shooter ready state
