@@ -55,7 +55,7 @@ public class Constants {
 	public static int kIntakeLeftId = 6;
 	public static int kIntakeRightId = 7;
 	
-	//CAN (0-64)
+	//CAN (0-3)
 	public static int kLeftFrontShooterMotorId = 0;
 	public static int kLeftRearShooterMotorId = 1;
 	public static int kRightFrontShooterMotorId = 2;
@@ -67,7 +67,7 @@ public class Constants {
 	public static int kRightEncoderChannelA = 2;
 	public static int kRightEncoderChannelB = 3;
 	
-	//SOLENOIDS (0-64)
+	//SOLENOIDS (0-7)
 	public static int kLeftShifterSolenoidId = 0;
 	public static int kRightShifterSolenoidId = 1;
 	public static int kIntakeLeftSolenoidId = 2;
