@@ -18,6 +18,9 @@ public class Constants {
     public static int kFlywheelAllowableError = 0;
     public static double kFlywheelOnTargetTolerance = 100.0;
     
+    public static double kLowRumbleValue = 0.3;
+    public static double kHighRumbleValue = 1;
+    
 	//-------------------------------//
 	//-subsystem motor speeds-//
 	//-----------------------------//
@@ -55,19 +58,11 @@ public class Constants {
 	public static int kIntakeLeftId = 6;
 	public static int kIntakeRightId = 7;
 	
-<<<<<<< HEAD
-	//CAN (0-64)
+	//CAN (0-3)
 	public static int kLeftFrontShooterMotorId = 5;
 	public static int kLeftRearShooterMotorId = 6;
 	public static int kRightFrontShooterMotorId = 3;
 	public static int kRightRearShooterMotorId = 4;
-=======
-	//CAN (0-3)
-	public static int kLeftFrontShooterMotorId = 0;
-	public static int kLeftRearShooterMotorId = 1;
-	public static int kRightFrontShooterMotorId = 2;
-	public static int kRightRearShooterMotorId = 3;
->>>>>>> origin/master
 	
 	//DIO (0-9)
 	public static int kLeftEncoderChannelA = 0;
@@ -76,12 +71,12 @@ public class Constants {
 	public static int kRightEncoderChannelB = 3;
 	
 	//SOLENOIDS (0-7)
-	public static int kLeftShifterSolenoidId = 0;
+	public static int kLeftShifterSolenoidId = 3;
 	public static int kRightShifterSolenoidId = 1;
 	public static int kIntakeLeftSolenoidId = 5; //012345
 	public static int kIntakeRightSolenoidId = 4; //
 	public static int kRampLeftSolenoidId = 2;
-	public static int kRampRightSolenoidId = 3;
+	public static int kRampRightSolenoidId = 7;
 	public static int kClimberReleaseSolenoidId = 6; //not use
-	public static int kMrCushySolenoid = 7; //not use
+	public static int kMrCushySolenoid = 0; //not use
 }

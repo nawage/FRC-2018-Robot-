@@ -128,7 +128,7 @@ public class Intake extends Subsystem
 
 	public void setRollerSpeed(double speed) {
 		mIntakeLeftTalon.set(speed);
-		mIntakeRightTalon.set(-1*speed);
+		mIntakeRightTalon.set(speed);
 	}
 	
 	public void setArmsOpen(boolean arms) {

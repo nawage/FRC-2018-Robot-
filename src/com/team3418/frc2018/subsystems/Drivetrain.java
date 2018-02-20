@@ -120,7 +120,7 @@ public class Drivetrain extends Subsystem {
 			setLowGear();
 			break;
 		default:
-			setHighGear();
+			highGear();
 			break;
 		}
 		

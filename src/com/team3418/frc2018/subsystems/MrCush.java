@@ -59,11 +59,11 @@ public class MrCush extends Subsystem {
 	}
 	
 	private void setExtend() {
-		MrCushySolenoid.set(true);
+		MrCushySolenoid.set(false);
 	}
 	
 	private void setRetract() {
-		MrCushySolenoid.set(false);
+		MrCushySolenoid.set(true);
 	}
 
 	@Override
