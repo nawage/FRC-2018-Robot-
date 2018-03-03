@@ -17,11 +17,11 @@ public class Ramp extends Subsystem
     }
     
 	private Solenoid mRampLeftSolenoid;
-	
+	private Solenoid mRampRightSolenoid;
     
 	public Ramp() {
 		mRampLeftSolenoid = new Solenoid(Constants.kRampLeftSolenoidId);
-		
+		mRampRightSolenoid = new Solenoid(Constants.kRampRightSolenoidId);
 		
 		System.out.println("Ramp Done Initializing.");
 	}
@@ -65,6 +65,7 @@ public class Ramp extends Subsystem
 	
 	public void setRampLow(boolean arms) {
 		mRampLeftSolenoid.set(arms);
+		mRampRightSolenoid.set(arms);
 	}
 
 	@Override

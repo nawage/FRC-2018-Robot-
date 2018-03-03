@@ -5,7 +5,9 @@ import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.can.*;
 import com.team3418.frc2018.Constants;
 import com.team3418.frc2018.HardwareMap;
-import com.ctre.phoenix.motorcontrol.can.TalonSRX;
+import com.ctre.phoenix.motorcontrol.can.VictorSPX;
+
+import edu.wpi.first.wpilibj.Victor;
 import edu.wpi.first.wpilibj.VictorSP;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
@@ -18,15 +20,15 @@ public class Shooter extends Subsystem {
         return mInstance;
     }
     
-    TalonSRX mLeftFrontShooterTalon;
-	TalonSRX  mLeftRearShooterTalon;
-	TalonSRX mRightFrontShooterTalon;
-	TalonSRX mRightRearShooterTalon;
+    VictorSPX mLeftFrontShooterTalon;
+	VictorSPX  mLeftRearShooterTalon;
+	VictorSPX mRightFrontShooterTalon;
+	VictorSPX mRightRearShooterTalon;
     
     public Shooter() {
 		
 		//Left Front Talon Motor Controller
-		mLeftFrontShooterTalon = new TalonSRX(Constants.kLeftFrontShooterMotorId);		
+		mLeftFrontShooterTalon = new VictorSPX(Constants.kLeftFrontShooterMotorId);		
 //		mLeftFrontShooterTalon.setFeedbackDevice(FeedbackDevice.CtreMagEncoder_Relative);
 		mLeftFrontShooterTalon.set(ControlMode.PercentOutput,0);
 //		mLeftFrontShooterTalon.setPID(Constants.kFlywheelKp, Constants.kFlywheelKi, Constants.kFlywheelKd, Constants.kFlywheelKf,
@@ -47,7 +49,7 @@ public class Shooter extends Subsystem {
 		System.out.println("Left Front Shooter Done Initializing.");
 		
 		//Left Rear Talon Motor Controller
-		mLeftRearShooterTalon = new TalonSRX(Constants.kLeftRearShooterMotorId);
+		mLeftRearShooterTalon = new VictorSPX(Constants.kLeftRearShooterMotorId);
 //		mLeftRearShooterTalon.setFeedbackDevice(FeedbackDevice.CtreMagEncoder_RemLeftRearShooterTalon.changeControlMode(TalonControlMode.PercentVbus);
 		mLeftRearShooterTalon.set(ControlMode.PercentOutput,0);
 //		mLeftRearShooterTalon.setPID(Constants.kFlywheelKp, Constants.kFlywheelKi, Constants.kFlywheelKd, Constants.kFlywheelKf,
@@ -66,7 +68,7 @@ public class Shooter extends Subsystem {
 		System.out.println("Left Rear Shooter Done Initializing.");
 		
 		//Right Front Talon Motor Controller
-		mRightFrontShooterTalon = new TalonSRX(Constants.kRightFrontShooterMotorId);
+		mRightFrontShooterTalon = new VictorSPX(Constants.kRightFrontShooterMotorId);
 //		mRightFrontShooterTalon.setFeedbackDevice(FeedbackDevice.CtreMagEncoder_Relative);
 		mRightFrontShooterTalon.set(ControlMode.PercentOutput,0);
 //		mRightFrontShooterTalon.setPID(Constants.kFlywheelKp, Constants.kFlywheelKi, Constants.kFlywheelKd, Constants.kFlywheelKf,
@@ -88,7 +90,7 @@ public class Shooter extends Subsystem {
 		System.out.println("Right Front Shooter Done Initializing.");
 		
 		//Right Rear Talon Motor Controller
-		mRightRearShooterTalon = new TalonSRX(Constants.kRightRearShooterMotorId);
+		mRightRearShooterTalon = new VictorSPX(Constants.kRightRearShooterMotorId);
 //		mRightRearShooterTalon.setFeedbackDevice(FeedbackDevice.CtreMagEncoder_Relative);
 		mRightRearShooterTalon.set(ControlMode.PercentOutput,0);
 //		mRightRearShooterTalon.setPID(Constants.kFlywheelKp, Constants.kFlywheelKi, Constants.kFlywheelKd, Constants.kFlywheelKf,
@@ -153,11 +155,11 @@ public class Shooter extends Subsystem {
 			break;
 		}
 		
-//		if (bothIsOnTarget()){
-//			mShooterReadyState = ShooterReadyState.READY;
-//		} else {
-//			mShooterReadyState = ShooterReadyState.NOT_READY;
-//		}
+		if (bothIsOnTarget()){
+			mShooterReadyState = ShooterReadyState.READY;
+		} else {
+			mShooterReadyState = ShooterReadyState.NOT_READY;
+		}
 		
 		outputToSmartDashboard();
 		
@@ -222,24 +224,24 @@ public class Shooter extends Subsystem {
 		mRightRearShooterTalon.set(ControlMode.PercentOutput,speed);
 	}
 	
-	//set shooter ready state
-//	private boolean leftIsOnTarget(){
-//		return (mLeftFrontShooterTalon.getControlMode() == CANTalon.TalonControlMode.Speed
-//                && Math.abs(getLeftFrontRpm() - getLeftFrontSetpoint()) < Constants.kFlywheelOnTargetTolerance);
-//	}
-//	
-//	private boolean RightIsOnTarget(){
-//		return (mRightFrontShooterTalon.getControlMode() == CANTalon.TalonControlMode.Speed
-//                && Math.abs(getRightFrontRpm() - getRightFrontSetpoint()) < Constants.kFlywheelOnTargetTolerance);
-//	}
-//	
-//	private boolean bothIsOnTarget(){
-//		return (leftIsOnTarget() && RightIsOnTarget());
-//	}
-//	
-//    public boolean isShooterReady(){
-//    	return bothIsOnTarget();
-//    }
+	set shooter ready state
+	private boolean leftIsOnTarget(){
+		return (mLeftFrontShooterTalon.getControlMode() == CANTalon.TalonControlMode.Speed
+                && Math.abs(getLeftFrontRpm() - getLeftFrontSetpoint()) < Constants.kFlywheelOnTargetTolerance);
+	}
+	
+	private boolean RightIsOnTarget(){
+		return (mRightFrontShooterTalon.getControlMode() == CANTalon.TalonControlMode.Speed
+                && Math.abs(getRightFrontRpm() - getRightFrontSetpoint()) < Constants.kFlywheelOnTargetTolerance);
+	}
+	
+	private boolean bothIsOnTarget(){
+		return (leftIsOnTarget() && RightIsOnTarget());
+	}
+	
+    public boolean isShooterReady(){
+    	return bothIsOnTarget();
+    }
 	
 	@Override
 	public void outputToSmartDashboard() {

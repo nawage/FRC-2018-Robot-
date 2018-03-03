@@ -1,7 +1,5 @@
 package com.team3418.frc2018.subsystems;
 
-import com.ctre.phoenix.motorcontrol.ControlMode;
-import com.ctre.phoenix.motorcontrol.can.VictorSPX;
 import com.team3418.frc2018.Constants;
 import com.team3418.frc2018.HardwareMap;
 import com.team3418.frc2018.subsystems.Intake.IntakeArmState;
@@ -18,15 +16,12 @@ public class Climber extends Subsystem {
         return mInstance;
     }
     
-    private VictorSPX mClimberVictor;
+    private VictorSP mClimberVictor;
     private Solenoid mClimberReleaseSolenoid;
         
     public Climber() {
-    	mClimberVictor = new VictorSPX(Constants.kClimberId);
+    	mClimberVictor = HardwareMap.getInstance().mClimberHardware;
     	mClimberReleaseSolenoid = HardwareMap.getInstance().mClimberReleaseHardware;
-    	mClimberVictor.set(ControlMode.PercentOutput,0);
-    	mClimberVictor.setSensorPhase(false);
-    	mClimberVictor.setInverted(false);
     }
     
   	public enum ClimberState {
@@ -108,7 +103,7 @@ public class Climber extends Subsystem {
 	}
 	
 	public void setSpeed(double speed) {
-		mClimberVictor.set(ControlMode.PercentOutput, speed);
+		mClimberVictor.set(speed);
 	}
 	
 	public void release(boolean climbRelease) {
@@ -117,7 +112,7 @@ public class Climber extends Subsystem {
 	
 	@Override
 	public void outputToSmartDashboard() {
-		//SmartDashboard.putNumber("Climber_Speed", mClimberVictor.getSpeed());
+		SmartDashboard.putNumber("Climber_Speed", mClimberVictor.getSpeed());
 		SmartDashboard.putString("Climber_Winch_State", mClimberState.toString());
 		SmartDashboard.putString("Climber_Release_State", mClimberReleaseState.toString());
 	}

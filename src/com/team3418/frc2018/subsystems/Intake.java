@@ -3,8 +3,6 @@ package com.team3418.frc2018.subsystems;
 import com.team3418.frc2018.Constants;
 import com.team3418.frc2018.HardwareMap;
 import com.ctre.CANTalon;
-import com.ctre.phoenix.motorcontrol.ControlMode;
-import com.ctre.phoenix.motorcontrol.can.VictorSPX;
 
 import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj.Talon;
@@ -21,23 +19,17 @@ public class Intake extends Subsystem
     	
     }
     
-	private VictorSPX mIntakeLeftTalon;
-	private VictorSPX mIntakeRightTalon;
+	private VictorSP mIntakeLeftTalon;
+	private VictorSP mIntakeRightTalon;
 	private Solenoid mIntakeArmLeftSolenoid;
 	private Solenoid mIntakeArmRightSolenoid;
-	
     
 	public Intake() {
-			
-		mIntakeLeftTalon= new VictorSPX(Constants.kIntakeLeftId);
-		mIntakeLeftTalon.setSensorPhase(false);
-		mIntakeLeftTalon.setInverted(false);
+		mIntakeLeftTalon=HardwareMap.getInstance().mIntakeLeftHardware;
 		
+	
 		//mIntakeLeftTalon.reverseOutput(false);
-		mIntakeRightTalon = new VictorSPX(Constants.kIntakeRightId);
-		mIntakeRightTalon.setSensorPhase(false);
-		mIntakeRightTalon.setInverted(false);
-		
+		mIntakeRightTalon = HardwareMap.getInstance().mIntakeRightHardware;
 		//mIntakeRightTalon.reverseOutput(true);
 		
 		mIntakeArmLeftSolenoid = new Solenoid(Constants.kIntakeLeftSolenoidId);
@@ -45,8 +37,6 @@ public class Intake extends Subsystem
 		mIntakeArmRightSolenoid = new Solenoid(Constants.kIntakeRightSolenoidId);
 		
 		System.out.println("Intake Done Initializing.");
-		mIntakeLeftTalon.set(ControlMode.PercentOutput,0);
-		mIntakeRightTalon.set(ControlMode.PercentOutput,0);
 	}
     
     public enum IntakeRollerState {
@@ -137,8 +127,8 @@ public class Intake extends Subsystem
 	}
 
 	public void setRollerSpeed(double speed) {
-		mIntakeLeftTalon.set(ControlMode.PercentOutput, speed);
-		mIntakeRightTalon.set(ControlMode.PercentOutput, speed);
+		mIntakeLeftTalon.set(speed);
+		mIntakeRightTalon.set(speed);
 	}
 	
 	public void setArmsOpen(boolean arms) {
@@ -148,7 +138,7 @@ public class Intake extends Subsystem
 
 	@Override
 	public void outputToSmartDashboard() {
-		//SmartDashboard.putNumber("Left_Intake_Speed", mIntakeLeftTalon.set(ControlMode.PercentOutput,speed);
+		SmartDashboard.putNumber("Left_Intake_Speed", mIntakeLeftTalon.getSpeed());
 		SmartDashboard.putString("Intake_Roller_State", mIntakeRollerState.toString());
 		SmartDashboard.putString("Intake_Arm_State", mIntakeArmState.toString());
 		//SmartDashboard.putString("Sensor_Value", toString());

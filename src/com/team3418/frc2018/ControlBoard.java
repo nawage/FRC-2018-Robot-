@@ -2,6 +2,9 @@ package com.team3418.frc2018;
 
 import edu.wpi.first.wpilibj.Joystick;
 
+
+
+
 public class ControlBoard {
 	
 	private static ControlBoard mInstance = new ControlBoard();
@@ -12,6 +15,7 @@ public class ControlBoard {
     
     //Create Joystick Object
     private final Joystick mDriverStick;
+    
     private final Joystick mSecondaryDriverStick;
     private final Joystick mSwitchboard;
     
@@ -20,7 +24,12 @@ public class ControlBoard {
     	mDriverStick = new Joystick(0);
     	mSecondaryDriverStick = new Joystick(1);
     	mSwitchboard = new Joystick(2);
-    }
+    	
+    	mDriverStick.setRumble(edu.wpi.first.wpilibj.GenericHID.RumbleType.kLeftRumble, 5);
+    	mDriverStick.setRumble(edu.wpi.first.wpilibj.GenericHID.RumbleType.kRightRumble, 5);
+    	mSecondaryDriverStick.setRumble(edu.wpi.first.wpilibj.GenericHID.RumbleType.kLeftRumble, 5); 
+    	mSecondaryDriverStick.setRumble(edu.wpi.first.wpilibj.GenericHID.RumbleType.kRightRumble, 5);
+    } // Skrrt Skrrt
     
     //DRIVER CONTROLLER
     
@@ -44,6 +53,8 @@ public class ControlBoard {
     public int getDriverPov(){
     	return mDriverStick.getPOV(0);
     }
+    //public double mDriverStick1.setRumble(edu.wpi.first.wpilibj.GenericHID.RumbleType.kLeftRumble, 5);
+
     
     //driver functional controls
     public boolean getDriverHighGearButton(){
@@ -78,6 +89,7 @@ public class ControlBoard {
     	return mSecondaryDriverStick.getPOV(0)==270 || mSecondaryDriverStick.getPOV(0)==315||mSecondaryDriverStick.getPOV(0)==225;
     	
     }
+    public boolean 
     //
     
     //SECONDARY CONTROLLER
@@ -96,20 +108,12 @@ public class ControlBoard {
     	return mSecondaryDriverStick.getRawButton(7);
     }
     
-    public boolean getSecondaryLeftIntakeButton(){
+    public boolean getSecondaryIntakeButton(){
     	return mSecondaryDriverStick.getRawAxis(1) > .2;
     }
     
-    public boolean getSecondaryRightIntakeButton(){
-    	return mSecondaryDriverStick.getRawAxis(5) > .2;
-    }
-    
-    public boolean getSecondaryLeftOutakeButton(){
+    public boolean getSecondaryOutakeButton(){
     	return mSecondaryDriverStick.getRawAxis(1) < -.2;
-    }
-    
-    public boolean getSecondaryRightOutakeButton(){
-    	return mSecondaryDriverStick.getRawAxis(5) < -.2;
     }
     
     public boolean getSecondarySpoolButton(){
@@ -128,26 +132,18 @@ public class ControlBoard {
     	return mSecondaryDriverStick.getRawAxis(2) > .1;
     }
     
-    public boolean getSecondaryLeftArmOpenButton(){
-    	return mSecondaryDriverStick.getRawAxis(0) < -.8;
-    }
-    
-    public boolean getSecondaryRightArmOpenButton(){
+    public boolean getSecondaryArmOpenButton(){
     	return mSecondaryDriverStick.getRawAxis(4) > .8;
     }
     
-    public boolean getSecondaryLeftArmCloseButton(){
-    	return mSecondaryDriverStick.getRawAxis(0) > .8;
-    }
-    
-    public boolean getSecondaryRightArmCloseButton(){
+    public boolean getSecondaryArmCloseButton(){
     	return mSecondaryDriverStick.getRawAxis(4) < -.8;
     }
     
     public boolean getSecondaryHighAimButton(){
     	return mSecondaryDriverStick.getRawButton(4);
     }
-    
+    // Skrrt Skrrt
     public boolean getSecondaryLowAimButton(){
     	return mSecondaryDriverStick.getRawButton(1);
     }

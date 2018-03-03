@@ -1,8 +1,5 @@
 package com.team3418.frc2018.subsystems;
 
-import com.ctre.phoenix.motorcontrol.ControlMode;
-import com.ctre.phoenix.motorcontrol.can.TalonSRX;
-import com.ctre.phoenix.motorcontrol.can.VictorSPX;
 import com.team3418.frc2018.Constants;
 import com.team3418.frc2018.HardwareMap;
 
@@ -22,19 +19,14 @@ public class Drivetrain extends Subsystem {
     }
     
     
-   
+    
     Solenoid mLeftSolenoid;
     Solenoid mRightSolenoid;
     AnalogInput mLaserInput;
-    
+    RobotDrive mDrive;
     
     public Encoder mLeftEncoder;
     public Encoder mRightEncoder;
-    
-    VictorSPX mRightFrontDrive;
-    VictorSPX mRightRearDrive;
-    VictorSPX mLeftFrontDrive;
-    VictorSPX mLeftRearDrive;
 	
     public Drivetrain(){
     	
@@ -43,33 +35,14 @@ public class Drivetrain extends Subsystem {
 		final double radius = 2;
 		final double calculated = (2*pi)/ticksPerRev*radius;
 //    	hi
-		
     	mLeftSolenoid = HardwareMap.getInstance().mLeftShifterHardware;
     	mRightSolenoid = HardwareMap.getInstance().mRightShifterHardware;
     	//mLaserInput = HardwareMap.getInstance().mLaserHardware;
     	
-    	
-    	mLeftFrontDrive = new VictorSPX(Constants.kLeftFrontMotorId);
-    	mLeftFrontDrive.set(ControlMode.PercentOutput,0);
-    	mLeftFrontDrive.setSensorPhase(false);
-    	mLeftFrontDrive.setInverted(false);
-    	
-    	mRightFrontDrive = new     VictorSPX(Constants.kRightFrontMotorId);
-    	mRightFrontDrive.set(ControlMode.PercentOutput,0);
-    	mRightFrontDrive.setSensorPhase(false);
-    	mRightFrontDrive.setInverted(true);
-    	
-    	mLeftRearDrive = new     VictorSPX(Constants.kLeftRearMotorId);
-    	mLeftRearDrive.set(ControlMode.PercentOutput,0);
-    	mLeftRearDrive.setSensorPhase(false);
-    	mLeftRearDrive.setInverted(false);
-    	
-    	mRightRearDrive = new     VictorSPX(Constants.kRightRearMotorId);
-    	mRightRearDrive.set(ControlMode.PercentOutput,0);
-    	mRightRearDrive.setSensorPhase(false);
-    	mRightRearDrive.setInverted(true);
-    	
-    	
+    	mDrive = new RobotDrive(Constants.kLeftFrontMotorId,
+    							Constants.kLeftRearMotorId,
+    							Constants.kRightFrontMotorId,
+    							Constants.kRightRearMotorId);
     	
     	mLeftEncoder = new Encoder(1, 2);
 		mLeftEncoder.setDistancePerPulse(calculated);
@@ -109,31 +82,24 @@ public class Drivetrain extends Subsystem {
     	//System.out.println("Left speed = " + left + " right speed = " + right);
     	mLeftSpeed = left;
     	mRightSpeed = right;
-    	mLeftFrontDrive.set(ControlMode.PercentOutput,left);
-    	mLeftRearDrive.set(ControlMode.PercentOutput,left);
-    	mRightFrontDrive.set(ControlMode.PercentOutput,right);
-    	mRightRearDrive.set(ControlMode.PercentOutput,right);
+    	mDrive.tankDrive(mLeftSpeed, mRightSpeed);
     }
     
-//    public void setArcadeDriveSpeed(double move, double rotate){
-//    	mRotateSpeed = rotate;
-//    	mMoveSpeed = move;
-//    	mDrive.arcadeDrive(move, rotate);
-//    }
+    public void setArcadeDriveSpeed(double move, double rotate){
+    	mRotateSpeed = rotate;
+    	mMoveSpeed = move;
+    	mDrive.arcadeDrive(move, rotate);
+    }
     
     
     
     
     @Override
     public void stop(){
-    	mLeftFrontDrive.set(ControlMode.PercentOutput,0);
-    	mLeftRearDrive.set(ControlMode.PercentOutput,0);
-    	mRightFrontDrive.set(ControlMode.PercentOutput,0);
-    	mRightRearDrive.set(ControlMode.PercentOutput,0);
+    	mDrive.stopMotor();
     }
     
     private void setLowGear() {
-    	
     	mLeftSolenoid.set(false);
     	mRightSolenoid.set(false);
     }

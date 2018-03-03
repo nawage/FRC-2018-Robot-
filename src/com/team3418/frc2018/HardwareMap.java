@@ -1,7 +1,5 @@
 package com.team3418.frc2018;
 
-import com.ctre.phoenix.motorcontrol.can.VictorSPX;
-
 //import edu.wpi.first.wpilibj.ADXRS450_Gyro;
 import edu.wpi.first.wpilibj.AnalogInput;
 import edu.wpi.first.wpilibj.Compressor;
@@ -17,8 +15,8 @@ public class HardwareMap {
 	}
 	
 	public Compressor mCompressorHardware;
-	public VictorSPX mIntakeLeftHardware;
-	public VictorSPX mIntakeRightHardware;
+	public VictorSP mIntakeLeftHardware;
+	public VictorSP mIntakeRightHardware;
 //	public VictorSP mFeederHardware;
 	public VictorSP mClimberHardware;
 	public Solenoid mLeftShifterHardware;
@@ -37,8 +35,8 @@ public class HardwareMap {
 			mClimberHardware = new VictorSP(Constants.kClimberId);
 			mLeftShifterHardware = new Solenoid(Constants.kLeftShifterSolenoidId);
 	    	mRightShifterHardware = new Solenoid(Constants.kRightShifterSolenoidId);
-	    	mIntakeLeftHardware = new VictorSPX(Constants.kIntakeLeftId);
-	    	mIntakeRightHardware = new VictorSPX(Constants.kIntakeRightId);
+	    	mIntakeLeftHardware = new VictorSP(Constants.kIntakeLeftId);
+	    	mIntakeRightHardware = new VictorSP(Constants.kIntakeRightId);
 			mCompressorHardware = new Compressor(0);
 			//mGyro = new ADXRS450_Gyro();
 			//mGyro.calibrate();

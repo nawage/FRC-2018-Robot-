@@ -92,21 +92,6 @@ public class Robot extends IterativeRobot {
 		if(gameData.length() > 0) {
 			if(gameData.charAt(0) == 'L') {
 			//Put left auto code here
-				//
-			}
-			else {
-			//Put right auto code here
-				
-		  	}
-        }
-		*/
-        
-        /*FMS CODE
-        String gameData;
-		gameData = DriverStation.getInstance().getGameSpecificMessage();
-		if(gameData.length() > 1) {
-			if(gameData.charAt(0) == 'L') {
-			//Put left auto code here
 				
 			}
 			else {
@@ -170,20 +155,10 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void teleopPeriodic() {
 		
-		//Intake Left
-		if(mControlBoard.getSecondaryLeftIntakeButton()) {
+		//Intakes
+		if(mControlBoard.getSecondaryIntakeButton()) {
 			mIntake.intake();
-		} else if(mControlBoard.getSecondaryLeftOutakeButton()){ 
-			mIntake.reverse();
-		}
-		else {
-			mIntake.stopIntakeMotor();
-		}
-		
-		//Intake Right
-		if(mControlBoard.getSecondaryRightIntakeButton()) {
-			mIntake.intake();
-		} else if(mControlBoard.getSecondaryRightOutakeButton()){ 
+		} else if(mControlBoard.getSecondaryOutakeButton()){ 
 			mIntake.reverse();
 		}
 		else {
@@ -207,7 +182,7 @@ public class Robot extends IterativeRobot {
 		} else {
 			mMrCush.Extend();
 		}
-		
+		// Skrrt Skrrt
 		//Shooter Spool
 		if (mControlBoard.getSecondarySpoolButton()) {
 			mShooter.shoot();
@@ -235,19 +210,11 @@ public class Robot extends IterativeRobot {
 			mRamp.low() ;
 		}
 		
-		//Intake Left Arms
-		if(mControlBoard.getSecondaryLeftArmOpenButton()){
+		//Intake Arms
+		if(mControlBoard.getSecondaryArmOpenButton()){
 			mIntake.open();
 		}
-		if(mControlBoard.getSecondaryLeftArmCloseButton()){
-			mIntake.close();
-		}
-		
-		//Intake Right Arms
-		if(mControlBoard.getSecondaryRightArmOpenButton()){
-			mIntake.open();
-		}
-		if(mControlBoard.getSecondaryRightArmCloseButton()){
+		if(mControlBoard.getSecondaryArmCloseButton()){
 			mIntake.close();
 		}
 		
@@ -261,7 +228,7 @@ public class Robot extends IterativeRobot {
 		}
 		
 		//Climber Release (with double safety switch)
-		if(mControlBoard.getSecondaryClimberRelease() && mControlBoard.getSwitchboardClimberRelease()){
+		if(mControlBoard.getSecondaryArmCloseButton() && mControlBoard.getSwitchboardClimberRelease()){
 			mClimber.Release();
 		}
 		
