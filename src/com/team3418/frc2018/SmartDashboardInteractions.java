@@ -25,14 +25,16 @@ public class SmartDashboardInteractions {
     //happens when the class is first created
 	public void initWithDefaults() {
 		mAutoChooser = new SendableChooser<AutonOption>();
-		
-        mAutoChooser.addObject(AutonOption.MIDDLE_GEAR_STAY.name, AutonOption.MIDDLE_GEAR_STAY);
-        mAutoChooser.addObject(AutonOption.LEFT_GEAR_STAY.name, AutonOption.LEFT_GEAR_STAY);
-        mAutoChooser.addObject(AutonOption.RIGHT_GEAR_STAY.name, AutonOption.RIGHT_GEAR_STAY);
-        mAutoChooser.addObject(AutonOption.SHOOT.name, AutonOption.SHOOT);
-        mAutoChooser.addObject(AutonOption.STAND_STILL.name, AutonOption.STAND_STILL);
-        mAutoChooser.addObject(AutonOption.TEST.name, AutonOption.TEST);
-        mAutoChooser.addDefault("Stand_Still", AutonOption.STAND_STILL);
+		 mAutoChooser.addObject(AutonOption.MIDDLE_GEAR_STAY.name, AutonOption.MIDDLE_GEAR_STAY);
+		 mAutoChooser.addDefault("Stand_Still", AutonOption.STAND_STILL);
+		 
+//        mAutoChooser.addObject(AutonOption.MIDDLE_GEAR_STAY.name, AutonOption.MIDDLE_GEAR_STAY);
+//        mAutoChooser.addObject(AutonOption.LEFT_GEAR_STAY.name, AutonOption.LEFT_GEAR_STAY);
+//        mAutoChooser.addObject(AutonOption.RIGHT_GEAR_STAY.name, AutonOption.RIGHT_GEAR_STAY);
+//        mAutoChooser.addObject(AutonOption.SHOOT.name, AutonOption.SHOOT);
+//        mAutoChooser.addObject(AutonOption.STAND_STILL.name, AutonOption.STAND_STILL);
+//        mAutoChooser.addObject(AutonOption.TEST.name, AutonOption.TEST);
+//        mAutoChooser.addDefault("Stand_Still", AutonOption.STAND_STILL);
         
         SmartDashboard.putData("Auto Mode Chooser", mAutoChooser);
     }

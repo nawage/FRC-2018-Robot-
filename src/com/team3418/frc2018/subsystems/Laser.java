@@ -1,6 +1,6 @@
 package com.team3418.frc2018.subsystems;
 import  com.team3418.frc2018.HardwareMap;
-import edu.wpi.first.wpilibj.AnalogInput;
+//import edu.wpi.first.wpilibj.AnalogInput;
 import edu.wpi.first.wpilibj.VictorSP;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 

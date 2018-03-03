@@ -96,12 +96,20 @@ public class ControlBoard {
     	return mSecondaryDriverStick.getRawButton(7);
     }
     
-    public boolean getSecondaryIntakeButton(){
+    public boolean getSecondaryLeftIntakeButton(){
     	return mSecondaryDriverStick.getRawAxis(1) > .2;
     }
     
-    public boolean getSecondaryOutakeButton(){
+    public boolean getSecondaryRightIntakeButton(){
+    	return mSecondaryDriverStick.getRawAxis(5) > .2;
+    }
+    
+    public boolean getSecondaryLeftOutakeButton(){
     	return mSecondaryDriverStick.getRawAxis(1) < -.2;
+    }
+    
+    public boolean getSecondaryRightOutakeButton(){
+    	return mSecondaryDriverStick.getRawAxis(5) < -.2;
     }
     
     public boolean getSecondarySpoolButton(){
@@ -120,11 +128,19 @@ public class ControlBoard {
     	return mSecondaryDriverStick.getRawAxis(2) > .1;
     }
     
-    public boolean getSecondaryArmOpenButton(){
+    public boolean getSecondaryLeftArmOpenButton(){
+    	return mSecondaryDriverStick.getRawAxis(0) < -.8;
+    }
+    
+    public boolean getSecondaryRightArmOpenButton(){
     	return mSecondaryDriverStick.getRawAxis(4) > .8;
     }
     
-    public boolean getSecondaryArmCloseButton(){
+    public boolean getSecondaryLeftArmCloseButton(){
+    	return mSecondaryDriverStick.getRawAxis(0) > .8;
+    }
+    
+    public boolean getSecondaryRightArmCloseButton(){
     	return mSecondaryDriverStick.getRawAxis(4) < -.8;
     }
     

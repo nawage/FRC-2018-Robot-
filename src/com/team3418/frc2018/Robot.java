@@ -92,6 +92,21 @@ public class Robot extends IterativeRobot {
 		if(gameData.length() > 0) {
 			if(gameData.charAt(0) == 'L') {
 			//Put left auto code here
+				//
+			}
+			else {
+			//Put right auto code here
+				
+		  	}
+        }
+		*/
+        
+        /*FMS CODE
+        String gameData;
+		gameData = DriverStation.getInstance().getGameSpecificMessage();
+		if(gameData.length() > 1) {
+			if(gameData.charAt(0) == 'L') {
+			//Put left auto code here
 				
 			}
 			else {
@@ -155,10 +170,20 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void teleopPeriodic() {
 		
-		//Intakes
-		if(mControlBoard.getSecondaryIntakeButton()) {
+		//Intake Left
+		if(mControlBoard.getSecondaryLeftIntakeButton()) {
 			mIntake.intake();
-		} else if(mControlBoard.getSecondaryOutakeButton()){ 
+		} else if(mControlBoard.getSecondaryLeftOutakeButton()){ 
+			mIntake.reverse();
+		}
+		else {
+			mIntake.stopIntakeMotor();
+		}
+		
+		//Intake Right
+		if(mControlBoard.getSecondaryRightIntakeButton()) {
+			mIntake.intake();
+		} else if(mControlBoard.getSecondaryRightOutakeButton()){ 
 			mIntake.reverse();
 		}
 		else {
@@ -210,11 +235,19 @@ public class Robot extends IterativeRobot {
 			mRamp.low() ;
 		}
 		
-		//Intake Arms
-		if(mControlBoard.getSecondaryArmOpenButton()){
+		//Intake Left Arms
+		if(mControlBoard.getSecondaryLeftArmOpenButton()){
 			mIntake.open();
 		}
-		if(mControlBoard.getSecondaryArmCloseButton()){
+		if(mControlBoard.getSecondaryLeftArmCloseButton()){
+			mIntake.close();
+		}
+		
+		//Intake Right Arms
+		if(mControlBoard.getSecondaryRightArmOpenButton()){
+			mIntake.open();
+		}
+		if(mControlBoard.getSecondaryRightArmCloseButton()){
 			mIntake.close();
 		}
 		
@@ -228,7 +261,7 @@ public class Robot extends IterativeRobot {
 		}
 		
 		//Climber Release (with double safety switch)
-		if(mControlBoard.getSecondaryArmCloseButton() && mControlBoard.getSwitchboardClimberRelease()){
+		if(mControlBoard.getSecondaryClimberRelease() && mControlBoard.getSwitchboardClimberRelease()){
 			mClimber.Release();
 		}
 		
