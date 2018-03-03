@@ -84,22 +84,8 @@ public class Robot extends IterativeRobot {
 //        
         mAutoExecuter = new AutoExecuter();
         mAutoExecuter.setAutoRoutine(mSmartDashboardInteractions.getSelectedAutonMode());
+        mAutoExecuter.setAutoSetting(mSmartDashboardInteractions.getSelectedAutonSettings());
         mAutoExecuter.start();
-		
-        /*FMS CODE
-        String gameData;
-		gameData = DriverStation.getInstance().getGameSpecificMessage();
-		if(gameData.length() > 0) {
-			if(gameData.charAt(0) == 'L') {
-			//Put left auto code here
-				
-			}
-			else {
-			//Put right auto code here
-				
-		  	}
-        }
-		*/
                 
 		stopAllSubsystems();
 		updateAllSubsystems();
