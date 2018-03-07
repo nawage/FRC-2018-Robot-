@@ -21,7 +21,7 @@ public class SmartDashboardInteractions {
 	
 	//default autonomous mode in case one is not selected
     private static final AutonOption DEFAULT_MODE = AutonOption.STAND_STILL;
-    private static final AutonSettings DEFAULT_MODE = AutonSettings.SWITCH;
+    private static final AutonSettings DEFAULT_MODE1 = AutonSettings.SWITCH;
     
     
     //happens when the class is first created
@@ -40,6 +40,8 @@ public class SmartDashboardInteractions {
         
         //Auto Settings Chooser
         mAutoSettings = new SendableChooser<AutonSettings>();
+        mAutoSettings.addObject(AutonSettings.SCALE.settingName, AutonSettings.SCALE);
+        mAutoSettings.addDefault("Switch", AutonSettings.SWITCH);
         
         SmartDashboard.putData("Auto Mode Settings", mAutoSettings);
     }
@@ -54,6 +56,18 @@ public class SmartDashboardInteractions {
             }
         }
         return createAutoMode(selectedOption);
+    }
+    
+    public int getSelectedAutonSettings() {
+        int selectedSetting = 0;
+        if (mAutoSettings.getSelected() == AutonSettings.SWITCH) {
+        	selectedSetting = 0;
+        }
+        else if (mAutoSettings.getSelected() == AutonSettings.SCALE) {
+        	selectedSetting = 1;
+        }
+        
+        return selectedSetting;
     }
     
     
@@ -76,7 +90,16 @@ public class SmartDashboardInteractions {
     }
     
     private enum AutonSettings {
-	    SCALE, SWITCH, DEFAULT_MODE
+	    SCALE("Scale", 0),
+	    SWITCH("Switch", 1);
+	    
+	    public final String settingName;
+    	public final int settingValue;
+    	
+    	AutonSettings(String settingName, int settingValue) {
+    		this.settingName = settingName;
+    		this.settingValue = settingValue;
+    	}
     }
     
     //method to create auto mode based on chosen mode
