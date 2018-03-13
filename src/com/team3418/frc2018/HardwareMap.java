@@ -1,6 +1,8 @@
 package com.team3418.frc2018;
 
-import edu.wpi.first.wpilibj.ADXRS450_Gyro;
+import com.ctre.phoenix.motorcontrol.can.VictorSPX;
+
+//import edu.wpi.first.wpilibj.ADXRS450_Gyro;
 import edu.wpi.first.wpilibj.AnalogInput;
 import edu.wpi.first.wpilibj.Compressor;
 import edu.wpi.first.wpilibj.Solenoid;
@@ -15,33 +17,34 @@ public class HardwareMap {
 	}
 	
 	public Compressor mCompressorHardware;
-	public VictorSP mIntakeHardware;
-	public VictorSP mFeederHardware;
+	public VictorSPX mIntakeLeftHardware;
+	public VictorSPX mIntakeRightHardware;
+//	public VictorSP mFeederHardware;
 	public VictorSP mClimberHardware;
 	public Solenoid mLeftShifterHardware;
 	public Solenoid mRightShifterHardware;
-	public AnalogInput mLaserHardware;
+	//public AnalogInput mLaserHardware;
 	public Solenoid mClimberReleaseHardware;
+	public VictorSP mServoMotorHardware;
 	
 	
-	
-	public ADXRS450_Gyro mGyro;	
+//	public ADXRS450_Gyro mGyro;	
 	
 	HardwareMap() {
 		
 		try
 		{
-//			mClimberHardware = new VictorSP(Constants.kClimberId);
+			mClimberHardware = new VictorSP(Constants.kClimberId);
 			mLeftShifterHardware = new Solenoid(Constants.kLeftShifterSolenoidId);
 	    	mRightShifterHardware = new Solenoid(Constants.kRightShifterSolenoidId);
-//	    	mIntakeHardware = new VictorSP(Constants.kIntakeRollerId);
-//	    	mFeederHardware = new VictorSP(Constants.kFeederId);
+	    	mIntakeLeftHardware = new VictorSPX(Constants.kIntakeLeftId);
+	    	mIntakeRightHardware = new VictorSPX(Constants.kIntakeRightId);
 			mCompressorHardware = new Compressor(0);
-//			mGyro = new ADXRS450_Gyro();
-//			mGyro.calibrate();
-			mLaserHardware = new AnalogInput(0);
-//			mClimberReleaseHardware = new Solenoid(Constants.kClimberReleaseSolenoidId);
-			
+			//mGyro = new ADXRS450_Gyro();
+			//mGyro.calibrate();
+			//mLaserHardware = new AnalogInput(0);
+			mClimberReleaseHardware = new Solenoid(Constants.kClimberReleaseSolenoidId);
+			mServoMotorHardware = new VictorSP(Constants.kServoMotorId);
 
 		}
 		catch(Exception e)

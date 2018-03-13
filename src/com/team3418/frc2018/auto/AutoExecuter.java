@@ -24,7 +24,7 @@ public class AutoExecuter {
             m_thread.start();
         }
     }
-    
+    // Skrrt Skrrt
     public void stop() {
         if (mAutoMode != null) {
             mAutoMode.stop();

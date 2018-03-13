@@ -8,7 +8,7 @@ import edu.wpi.first.wpilibj.ADXRS450_Gyro;
 
 public class CameraAlign implements Action{
 	
-	private ADXRS450_Gyro mGyro = HardwareMap.getInstance().mGyro;
+//	private ADXRS450_Gyro mGyro = HardwareMap.getInstance().mGyro;
 	private MinionVision mMinionVision = MinionVision.getInstance();
 	private Drivetrain mDrivetrain = Drivetrain.getInstance();
 	
@@ -35,7 +35,7 @@ public class CameraAlign implements Action{
 	
 	public CameraAlign() {		
 		mAngleSetpoint = 0;
-		mGyro.reset();
+//		mGyro.reset();
 	}
 
 	@Override
@@ -50,7 +50,7 @@ public class CameraAlign implements Action{
 			calcDegreesToPixel();
 			mState = state.CORRECT_FIRST_ERROR;
 			System.out.println("camera error correction completed");
-			System.out.println("current angle is " + mGyro.getAngle() + " current setpoint is " + mAngleSetpoint);
+//			System.out.println("current angle is " + mGyro.getAngle() + " current setpoint is " + mAngleSetpoint);
 			break;
 		case CORRECT_FIRST_ERROR:
 			calcGyroSpeed();
@@ -80,12 +80,12 @@ public class CameraAlign implements Action{
 		mAngleSetpoint = (mMinionVision.getCombinedTargetX() - 160) * (mCameraFovDegrees / mCameraWidthPixels);
 	}
 	
-	private double calcGyroError() {//calculates gyro error relative to setpoint
-		return mAngleSetpoint - mGyro.getAngle();
-	}
+//	private double calcGyroError() {//calculates gyro error relative to setpoint
+//		return mAngleSetpoint - mGyro.getAngle();
+//	}
 	
 	private void calcGyroSpeed() {
-		mAngleCorrectionSpeed = calcGyroError() * .25;
+//		mAngleCorrectionSpeed = calcGyroError() * .25;
 		if (mAngleCorrectionSpeed < mRotationalMinSpeed && mAngleCorrectionSpeed > 0 ) {
 			mAngleCorrectionSpeed = mRotationalMinSpeed;
 		} else if (mAngleCorrectionSpeed > -mRotationalMinSpeed && mAngleCorrectionSpeed < 0 ) {
@@ -100,11 +100,11 @@ public class CameraAlign implements Action{
 	}
 	
 	private boolean isGyroOnTarget() {
-		if( Math.abs(calcGyroError()) < mRotationalDeadzone) {
-			errorCounts++;
-		} else {
-			errorCounts = 0;
-		}
+//		if( Math.abs(calcGyroError()) < mRotationalDeadzone) {
+//			errorCounts++;
+//		} else {
+//			errorCounts = 0;
+//		}
 		if(errorCounts >= requiredErrorCounts) {
 			return true;
 		} else {

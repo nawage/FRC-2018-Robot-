@@ -14,7 +14,7 @@ public class MrCush extends Subsystem {
     }
     
 	public MrCush() {
-		//MrCushySolenoid = new Solenoid(Constants.kMrCushySolenoid);
+		MrCushySolenoid = new Solenoid(Constants.kMrCushySolenoid);
 		System.out.println("Mr Cushy has been initialized :D");
 	}
 
@@ -24,10 +24,10 @@ public class MrCush extends Subsystem {
       	EXTENDED, RETRACTED
     }
   	
-  	private MrCushState MrCushState;
+  	private MrCushState mMrCushState;
   	
   	public MrCushState getClimberState() {
-  		return MrCushState;
+  		return mMrCushState;
   	}
 	
 
@@ -35,7 +35,7 @@ public class MrCush extends Subsystem {
 	@Override
 	public void updateSubsystem() {
 		
-		switch(MrCushState){
+		switch(mMrCushState){
 		case EXTENDED:
 			setExtend();
 			break;
@@ -43,7 +43,7 @@ public class MrCush extends Subsystem {
 			setRetract();
 			break;
 		default:
-			setRetract();
+			mMrCushState = MrCushState.EXTENDED;
 			break;
 		}
 		
@@ -51,28 +51,28 @@ public class MrCush extends Subsystem {
 	}
 	
 	public void Extend() {
-		MrCushState = MrCushState.EXTENDED;
+		mMrCushState = MrCushState.EXTENDED;
 	}
 	
 	public void Retract() {
-		MrCushState = MrCushState.RETRACTED;
+		mMrCushState = MrCushState.RETRACTED;
 	}
 	
 	private void setExtend() {
-		MrCushySolenoid.set(true);
+		MrCushySolenoid.set(false);
 	}
 	
 	private void setRetract() {
-		MrCushySolenoid.set(false);
+		MrCushySolenoid.set(true);
 	}
 
 	@Override
 	public void outputToSmartDashboard() {
-		SmartDashboard.putString("MrCushyState", MrCushState.toString());
+		SmartDashboard.putString("MrCushyState", mMrCushState.toString());
 	}
 
 	@Override
 	public void stop() {
-		Retract();
+		Extend();
 	}
 }

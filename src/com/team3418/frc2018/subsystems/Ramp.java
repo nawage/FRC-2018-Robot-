@@ -3,6 +3,7 @@ package com.team3418.frc2018.subsystems;
 import com.team3418.frc2018.Constants;
 import com.team3418.frc2018.HardwareMap;
 import com.team3418.frc2018.subsystems.Climber.ClimberReleaseState;
+import com.team3418.frc2018.subsystems.Drivetrain.DriveGear;
 
 import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
@@ -16,11 +17,11 @@ public class Ramp extends Subsystem
     }
     
 	private Solenoid mRampLeftSolenoid;
-	private Solenoid mRampRightSolenoid;
+	
     
 	public Ramp() {
 		mRampLeftSolenoid = new Solenoid(Constants.kRampLeftSolenoidId);
-		mRampRightSolenoid = new Solenoid(Constants.kRampRightSolenoidId);
+		
 		
 		System.out.println("Ramp Done Initializing.");
 	}
@@ -41,23 +42,30 @@ public class Ramp extends Subsystem
 	{
 		switch(mRampState) {
 		case HIGH:
-			setRampHigh(true);
+			setRampLow(false);
 			break;
 		case LOW:
-			setRampHigh(false);
+			setRampLow(true);
 			break;
 		default:
-			mRampState = RampState.LOW;
+			mRampState = RampState.HIGH;
 			break;
 		}
 		
 		outputToSmartDashboard();
 	}
 	
-	private void setRampHigh(boolean arms) {
+	public void high(){
+		mRampState = RampState.HIGH;
+	}
+	
+	public void low(){
+		mRampState = RampState.LOW;
+	}
+	
+	public void setRampLow(boolean arms) {
 		mRampLeftSolenoid.set(arms);
-		mRampRightSolenoid.set(arms);
-}
+	}
 
 	@Override
 	public void outputToSmartDashboard() {
@@ -67,6 +75,6 @@ public class Ramp extends Subsystem
 	@Override
 	public void stop() {
 		// TODO Auto-generated method stub
-		mRampState = RampState.LOW;
+		mRampState = RampState.HIGH;
 	}
 }

@@ -15,7 +15,7 @@ public class LeftGearStayMode extends AutoModeBase {
 	@Override
 	protected void routine() throws AutoModeEndedException {
 		runAction(new DriveStraightActionDistance(-93));
-		runAction(new TurnActionAngle(50));
+//		runAction(new TurnActionAngle(50));
 		runAction(new CameraAlign());
 		runAction(new DriveStraightActionTime(2, false, .6));
 		runAction(new ExtendGearAction());

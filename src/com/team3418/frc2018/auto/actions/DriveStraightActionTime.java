@@ -9,9 +9,9 @@ import edu.wpi.first.wpilibj.Timer;
 public class DriveStraightActionTime implements Action {
 	
 	private Drivetrain mDrivetrain = Drivetrain.getInstance();
-	private ADXRS450_Gyro mGyro = HardwareMap.getInstance().mGyro;
+//	private ADXRS450_Gyro mGyro = HardwareMap.getInstance().mGyro;
 	
-    private double mAngleSetpoint = mGyro.getAngle();
+//    private double mAngleSetpoint = mGyro.getAngle();
 	
 	private double mLinearSpeed = .7;
 	private double mRotationalMaxSpeed = .5;
@@ -77,12 +77,12 @@ public class DriveStraightActionTime implements Action {
 		System.out.println("finished with drive straight (timed) action");
 	}
 	
-	private double calcGyroError() {
-		return mAngleSetpoint - mGyro.getAngle();
-	}
-	
+//	private double calcGyroError() {
+//		return mAngleSetpoint - mGyro.getAngle();
+//	}
+//	
 	private void calcGyroSpeed() {
-		mAngleCorrectionSpeed = calcGyroError() * .05;
+//		mAngleCorrectionSpeed = calcGyroError() * .05;
 		if (mAngleCorrectionSpeed < mRotationalMinSpeed && mAngleCorrectionSpeed > 0 ) {
 			mAngleCorrectionSpeed = mRotationalMinSpeed;
 		} else if (mAngleCorrectionSpeed > -mRotationalMinSpeed && mAngleCorrectionSpeed < 0 ) {

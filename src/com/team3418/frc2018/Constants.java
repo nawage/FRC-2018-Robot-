@@ -18,22 +18,16 @@ public class Constants {
     public static int kFlywheelAllowableError = 0;
     public static double kFlywheelOnTargetTolerance = 100.0;
     
+    public static double kLowRumbleValue = 0.3;
+    public static double kHighRumbleValue = 1;
+    
 	//-------------------------------//
 	//-subsystem motor speeds-//
 	//-----------------------------//
     
     //Intake Roller
-    public static double kRollerIntakeSpeed = .75;
+    public static double kRollerIntakeSpeed = 1;
 	public static double kRollerReverseSpeed = -1;
-	//instake speed is negative for comp bot and positive for practice bot
-	
-	//Agitator
-    //public static double kAgitatorFeedSpeed = -.50;
-    //public static double kAgitatorReverseSpeed = .75;
-    
-    //Feeder Wheel
-	public static double kFeederSpeed = -.55;
-	//feeder speed is negative for comp bot and positive for practice bot
     
 	//Climber
 	public static double kClimberReverseSpeed = -.5;
@@ -46,10 +40,7 @@ public class Constants {
 	//-Autonomous-//
 	//-----------//
 	
-	
-	
-	
-	
+
 	//--------------------------//
 	//-static port assignments-//
 	//------------------------//
@@ -57,33 +48,38 @@ public class Constants {
 	//Do not change anything below this line
 	
 	//PWM (0-9)
-	public static int kLeftFrontMotorId = 0;
-	public static int kLeftRearMotorId = 1;
-	public static int kRightFrontMotorId = 2;
-	public static int kRightRearMotorId = 3;
+//	public static int kLeftFrontMotorId = 0;
+//	public static int kLeftRearMotorId = 1;
+//	public static int kRightFrontMotorId = 2;
+//	public static int kRightRearMotorId = 3;
 	
-	public static int kClimberId = 4;
-	
-	//CAN (0-64)
-	public static int kLeftFrontShooterMotorId = 0;
-	public static int kLeftRearShooterMotorId = 1;
-	public static int kRightFrontShooterMotorId = 2;
-	public static int kRightRearShooterMotorId = 3;
-	public static int kIntakeLeftId = 4;
-	public static int kIntakeRightId = 5;
+	//CAN (0-3)
+	public static int kLeftFrontShooterMotorId = 5;
+	public static int kLeftRearShooterMotorId = 6;
+	public static int kRightFrontShooterMotorId = 3;
+	public static int kRightRearShooterMotorId = 4;
+	public static int kLeftFrontMotorId = 9;
+	public static int kLeftRearMotorId = 10;
+	public static int kRightFrontMotorId = 7;
+	public static int kRightRearMotorId = 8;
+	public static int kClimberId = 13;
+	public static int kServoMotorId = 5;
+	public static int kIntakeLeftId = 12;
+	public static int kIntakeRightId = 11;
 	
 	//DIO (0-9)
-	public static int kLeftEncoderChannelA = 1;
-	public static int kLeftEncoderChannelB = 2;
-	public static int kRightEncoderChannelA = 3;
-	public static int kRightEncoderChannelB = 4;
+	public static int kLeftEncoderChannelA = 0;
+	public static int kLeftEncoderChannelB = 1;
+	public static int kRightEncoderChannelA = 2;
+	public static int kRightEncoderChannelB = 3;
 	
-	//SOLENOIDS (0-64)
-	public static int kLeftShifterSolenoidId = 0;
+	//SOLENOIDS (0-7)
+	
+	public static int kLeftShifterSolenoidId = 3; //DONT CONNECT ON ACTUAL ROBOT!!!!
 	public static int kRightShifterSolenoidId = 1;
-	public static int kIntakeSolenoidId = 2;
-	public static int kRampLeftSolenoidId = 3;
-	public static int kRampRightSolenoidId = 4;
-	public static int kClimberReleaseSolenoidId = 5;
-	public static int kMrCushySolenoid = 6;
+	public static int kIntakeLeftSolenoidId = 5;
+	public static int kIntakeRightSolenoidId = 4;
+	public static int kRampLeftSolenoidId = 2;
+	public static int kClimberReleaseSolenoidId = 6;
+	public static int kMrCushySolenoid = 0;
 }
