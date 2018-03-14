@@ -1,27 +1,21 @@
 package com.team3418.frc2018.auto.actions;
 
+import com.team3418.frc2018.subsystems.MrCush;
 import com.team3418.frc2018.subsystems.Shooter;
 
-public class ShootAction implements Action {
-	
-	
-	Shooter mShooter;
-	boolean mShoot;
-	
-	public ShootAction(boolean shoot) {
-		mShooter = Shooter.getInstance();
-		mShoot = shoot;
-	}
+public class ShootAction implements Action{
 
+	private MrCush mMrCush;
+	
+	private boolean finished = false;
+	
+	public ShootAction() {
+		mMrCush = MrCush.getInstance();
+	}
+	
 	@Override
 	public void start() {
-		if (mShoot) {
-			mShooter.shoot();
-			System.out.println("shooter is shooting");
-		} else {
-			mShooter.stop();
-			System.out.println("shooter has stopped");
-		}
+		mMrCush.Extend();
 	}
 
 	@Override
@@ -31,7 +25,11 @@ public class ShootAction implements Action {
 
 	@Override
 	public boolean isFinished() {
-		return true;
+		if (finished) {
+			System.out.println("MrCushy Shoot Action Completed");
+			return true;
+		}
+		return false;
 	}
 
 	@Override
