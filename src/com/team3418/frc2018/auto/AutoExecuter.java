@@ -4,10 +4,15 @@ package com.team3418.frc2018.auto;
 public class AutoExecuter {
 	
 	private AutoModeBase mAutoMode;
+	public int mAutoSetting;
     private Thread m_thread = null;
 
     public void setAutoRoutine(AutoModeBase newAutoMode) {
         mAutoMode = newAutoMode;
+    }
+    
+    public void setAutoSetting(int autoSetting) {
+        mAutoSetting = autoSetting;
     }
     
     public void start() {
