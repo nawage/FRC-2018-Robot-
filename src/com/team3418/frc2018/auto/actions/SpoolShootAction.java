@@ -22,7 +22,7 @@ public class SpoolShootAction implements Action{
 
 	@Override
 	public void update() {
-		if mShooter.isShooterReady() {
+		if (mShooter.isShooterReady())  {
 			mMrCush.Extend();
 		}
 	}

@@ -83,7 +83,8 @@ public class ControlBoard {
     //SECONDARY CONTROLLER
     
     //secondary functional controls
-
+ 
+    
     public boolean getClimberForwardButton(){
     	return mSecondaryDriverStick.getRawButton(3);
     }
