@@ -142,7 +142,7 @@ public class Shooter extends Subsystem {
 		
 		switch(mShooterState){
 		case SHOOT:
-			setShooterRpm(mTargetShooterRpm);
+			//setShooterRpm(mTargetShooterRpm);
 			setShooterOpenLoop(1);
 			break;
 		case STOP:
@@ -223,18 +223,15 @@ public class Shooter extends Subsystem {
 	}
 	
 	//set shooter ready state
-	
-
-	private boolean leftIsOnTarget(){
-		 
-		//return (mLeftFrontShooterTalon.getControlMode() == CANTalon.TalonControlMode.Speed && Math.abs(getLeftFront() - getLeftFrontSetpoint()) < Constants.kFlywheelOnTargetTolerance);
-		
-		return ((Math.abs(getLeftFrontRpm() - mLeftFrontShooterTalon.getClosedLoopTarget(5)) < Constants.kFlywheelOnTargetTolerance ));
-	}
-	
-	private boolean RightIsOnTarget(){
+private boolean RightIsOnTarget(){
 		
 		return ((Math.abs(getRightFrontRpm() - mRightFrontShooterTalon.getClosedLoopTarget(5)) < Constants.kFlywheelOnTargetTolerance ));
+		
+}
+		
+		private boolean leftIsOnTarget(){	
+		return ((Math.abs(getLeftFrontRpm() - mLeftFrontShooterTalon.getClosedLoopTarget(5)) < Constants.kFlywheelOnTargetTolerance ));
+		
 	}
 	
 	private boolean bothIsOnTarget(){
@@ -244,10 +241,10 @@ public class Shooter extends Subsystem {
     public boolean isShooterReady(){
     	return bothIsOnTarget();
     }
+
 	
 	@Override
 	public void outputToSmartDashboard() {
-		
         SmartDashboard.putBoolean("Flywheel_On_Target", bothIsOnTarget());
         SmartDashboard.putBoolean("Flywheel_On_Target_Left", leftIsOnTarget());
         SmartDashboard.putBoolean("Flywheel_On_Target_Right", RightIsOnTarget());
@@ -258,8 +255,8 @@ public class Shooter extends Subsystem {
 		SmartDashboard.putNumber("RightRear_Flywheel_rpm", getRightRearRpm());
 		
 		SmartDashboard.putNumber("Target_Shooter_rpm", getTargetShooterRpm());
-      
-//       SmartDashboard.putNumber("LeftFront_Flywheel_Closed_Loop_error", mLeftFrontShooterTalon.getClosedLoopError());
+        
+//        SmartDashboard.putNumber("LeftFront_Flywheel_Closed_Loop_error", mLeftFrontShooterTalon.getClosedLoopError());
 //        SmartDashboard.putNumber("LeftFront_Flywheel_Closed_Loop_error_Number", mLeftFrontShooterTalon.getClosedLoopError());
 //        SmartDashboard.putNumber("LeftRear_Flywheel_Closed_Loop_error", mLeftRearShooterTalon.getClosedLoopError());
 //        SmartDashboard.putNumber("LeftRear_Flywheel_Closed_Loop_error_Number", mLeftRearShooterTalon.getClosedLoopError());
@@ -267,7 +264,7 @@ public class Shooter extends Subsystem {
 //        SmartDashboard.putNumber("RightFront_Flywheel_Closed_Loop_error_Number", mRightFrontShooterTalon.getClosedLoopError());
 //        SmartDashboard.putNumber("RightRear_Flywheel_Closed_Loop_error", mRightRearShooterTalon.getClosedLoopError());
 //        SmartDashboard.putNumber("RightRear_Flywheel_Closed_Loop_error_Number", mRightRearShooterTalon.getClosedLoopError());
-        
+//        
         SmartDashboard.putString("Shooter_State", mShooterState.toString());
         SmartDashboard.putString("ShooterReady_State", mShooterReadyState.toString());
 	}
