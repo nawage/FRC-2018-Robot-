@@ -13,7 +13,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class SmartDashboardInteractions {
-	
+	//test
 	
 	//chooser object to send to smartdashboard
 	private SendableChooser<AutonOption> mAutoChooser;
@@ -23,7 +23,7 @@ public class SmartDashboardInteractions {
     private static final AutonOption DEFAULT_MODE = AutonOption.STAND_STILL;
     private static final AutonSettings DEFAULT_MODE1 = AutonSettings.SWITCH;
     
-    
+    //test
     //happens when the class is first created
 	public void initWithDefaults() {
 		//Auto Mode Chooser

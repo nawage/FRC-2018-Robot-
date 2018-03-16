@@ -84,6 +84,7 @@ public class Shooter extends Subsystem {
 //		mRightFrontShooterTalon.setAllowableClosedLoopErr(Constants.kFlywheelAllowableError);		
 		
 		mTargetShooterRpm = Constants.kTargetShooterRpm;
+		double mTargetLowShooterRpm = Constants.kTargetLowShooterRpm;
 		
 		System.out.println("Right Front Shooter Done Initializing.");
 		
@@ -119,6 +120,7 @@ public class Shooter extends Subsystem {
     private double mTargetShooterRpm;
     
     public void setTargetShooterRpm(double rpm){
+    	
     	mTargetShooterRpm = rpm;
     }
     
@@ -143,7 +145,9 @@ public class Shooter extends Subsystem {
 		switch(mShooterState){
 		case SHOOT:
 			//setShooterRpm(mTargetShooterRpm);
-			setShooterOpenLoop(1);
+			//if mRamp.getRampState() = {
+				setShooterOpenLoop(1);
+			//}
 			break;
 		case STOP:
 			setShooterOpenLoop(0);

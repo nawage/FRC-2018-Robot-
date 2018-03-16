@@ -35,6 +35,7 @@ public class Constants {
 	
 	//shooter
 	public static double kTargetShooterRpm = 1785;
+	public static double kTargetLowShooterRpm = 785;
 	
 	//-------------//
 	//-Autonomous-//
