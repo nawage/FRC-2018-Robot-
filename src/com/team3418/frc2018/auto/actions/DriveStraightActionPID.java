@@ -19,7 +19,7 @@ public class DriveStraightActionPID implements Action, PIDOutput {
 	
 	public DriveStraightActionPID(double distance) {
 		mDrivetrain = Drivetrain.getInstance();
-//		mGyro = HardwareMap.getInstance().mGyro;
+		mGyro = HardwareMap.getInstance().mGyro;
 		
 		mPIDController = new PIDController(.3, 0, 1, mDrivetrain.mRightEncoder, this);
 		mPIDController.setOutputRange(-.6, .6);

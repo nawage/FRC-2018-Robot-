@@ -4,7 +4,6 @@ import com.team3418.frc2018.auto.AutoModeBase;
 import com.team3418.frc2018.auto.modes.LeftAllign;
 import com.team3418.frc2018.auto.modes.MiddleAllign;
 import com.team3418.frc2018.auto.modes.RightAllign;
-import com.team3418.frc2018.auto.modes.RightGearStayMode;
 import com.team3418.frc2018.auto.modes.ShootMode;
 import com.team3418.frc2018.auto.modes.StandStillMode;
 import com.team3418.frc2018.auto.modes.TestMode;
@@ -20,7 +19,7 @@ public class SmartDashboardInteractions {
 	private SendableChooser<AutonSettings> mAutoSettings;
 	
 	//default autonomous mode in case one is not selected
-    private static final AutonOption DEFAULT_MODE = AutonOption.STAND_STILL;
+    private static final AutonOption DEFAULT_MODE = AutonOption.MIDDLE_ALLIGN;
     private static final AutonSettings DEFAULT_MODE1 = AutonSettings.SWITCH;
     
     //test

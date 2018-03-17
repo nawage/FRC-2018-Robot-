@@ -20,7 +20,7 @@ public class TurnActionPID implements Action, PIDOutput{
 	public TurnActionPID(double angle) {
 		mSetpoint = angle;
 		
-//		mGyro = HardwareMap.getInstance().mGyro;
+		mGyro = HardwareMap.getInstance().mGyro;
 		mGyro.reset();
 		
     	mPIDController = new PIDController(0.75, 0, 0.9, 0, mGyro, this);

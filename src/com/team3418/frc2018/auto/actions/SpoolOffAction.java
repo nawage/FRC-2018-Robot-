@@ -15,7 +15,8 @@ public class SpoolOffAction implements Action{
 	
 	@Override
 	public void start() {
-		mShooter.shoot();
+		mShooter.stop();
+		finished = true;
 	}
 
 	@Override

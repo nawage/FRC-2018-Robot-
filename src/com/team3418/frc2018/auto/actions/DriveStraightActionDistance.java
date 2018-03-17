@@ -10,14 +10,14 @@ public class DriveStraightActionDistance implements Action {
 	
 	private Drivetrain mDrivetrain = Drivetrain.getInstance();
 	private Encoder mEncoder = Drivetrain.getInstance().mRightEncoder;
-//	private ADXRS450_Gyro mGyro = HardwareMap.getInstance().mGyro;
+	private ADXRS450_Gyro mGyro = HardwareMap.getInstance().mGyro;
 	
 	private double mDistanceSetPoint;
-//	private double mAngleSetpoint = mGyro.getAngle();
+	private double mAngleSetpoint = mGyro.getAngle();
 	private double mEncoderCorrectionSpeed;
 	private double mAngleCorrectionSpeed;
 	private int mErrorCounts = 0;
-	private int mRequiredErrorCounts = 50;
+	private int mRequiredErrorCounts = 2;
 	
 	private double mLinearMaxSpeed = .7;
 	private double mLinearMinSpeed = .28;
@@ -56,16 +56,21 @@ public class DriveStraightActionDistance implements Action {
 	public void update() {
     	calcEncoderSpeed();
     	calcGyroSpeed();
-//    	System.out.println(calcGyroError());
+    	System.out.println(calcGyroError());
     	mDrivetrain.setTankDriveSpeed(mEncoderCorrectionSpeed + mAngleCorrectionSpeed, mEncoderCorrectionSpeed + -mAngleCorrectionSpeed);
 	}
     
     @Override
 	public boolean isFinished() {
+    	System.out.println("Encoder Error "+ calcEncoderError());
+    	System.out.println("In Zone Count: "+mErrorCounts);
 		if (isEncoderOnTarget()) {
 			return true;
 		}
 		return false;
+    	
+    	
+    	
 	}
     
 	@Override
@@ -75,16 +80,16 @@ public class DriveStraightActionDistance implements Action {
 		System.out.println("finished with drive straight (distance) action");
 	}
 	
-//	private double calcGyroError() {
-//		return mAngleSetpoint - mGyro.getAngle();
-//	}
-//	
+	private double calcGyroError() {
+		return mAngleSetpoint - mGyro.getAngle();
+	}
+	
 	private double calcEncoderError(){
 		return mDistanceSetPoint - mEncoder.getDistance();
 	}
 	
 	private void calcGyroSpeed() {
-//		mAngleCorrectionSpeed = calcGyroError() * .05;
+		mAngleCorrectionSpeed = calcGyroError() * .05;
 		if (mAngleCorrectionSpeed < mRotationalMinSpeed && mAngleCorrectionSpeed > 0 ) {
 			mAngleCorrectionSpeed = mRotationalMinSpeed;
 		} else if (mAngleCorrectionSpeed > -mRotationalMinSpeed && mAngleCorrectionSpeed < 0 ) {

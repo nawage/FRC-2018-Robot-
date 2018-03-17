@@ -90,7 +90,6 @@ public class Robot extends IterativeRobot {
 	
 	@Override
 	public void autonomousPeriodic() {
-		
 		updateAllSubsystems();
 	}
 
@@ -105,6 +104,7 @@ public class Robot extends IterativeRobot {
 		//mMinionVision.startVision();
         
         //mMinionVision.stopVision();
+        System.out.println("resetting encoders");
         mDrivetrain.resetEncoders();
         mDrivetrain.highGear();
         
@@ -125,7 +125,7 @@ public class Robot extends IterativeRobot {
             mAutoExecuter.stop();
         }
         mAutoExecuter = null;
-        
+        //test
 //        mMinionVision.stopVision();
         
 		stopAllSubsystems();

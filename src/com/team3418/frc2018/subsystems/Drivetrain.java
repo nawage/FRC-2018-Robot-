@@ -74,11 +74,11 @@ public class Drivetrain extends Subsystem {
     	mLeftEncoder = new Encoder(1, 2);
 		mLeftEncoder.setDistancePerPulse(calculated);
 		mLeftEncoder.setPIDSourceType(PIDSourceType.kDisplacement);
-		mLeftEncoder.setReverseDirection(false);
+		mLeftEncoder.setReverseDirection(true);
 		mRightEncoder = new Encoder(3, 4);
 		mRightEncoder.setDistancePerPulse(calculated);
 		mRightEncoder.setPIDSourceType(PIDSourceType.kDisplacement);
-		mRightEncoder.setReverseDirection(true);
+		mRightEncoder.setReverseDirection(false);
 		}
     
     private DriveGear mDriveGear;
@@ -107,7 +107,7 @@ public class Drivetrain extends Subsystem {
 	
     public void setTankDriveSpeed(double left, double right){
     	//System.out.println("Left speed = " + left + " right speed = " + right);
-    	mLeftSpeed = left;
+    	mLeftSpeed = -left;
     	mRightSpeed = right;
     	mLeftFrontDrive.set(ControlMode.PercentOutput,left);
     	mLeftRearDrive.set(ControlMode.PercentOutput,left);
@@ -145,7 +145,8 @@ public class Drivetrain extends Subsystem {
 	
 	@Override
 	public void updateSubsystem() {
-		
+		System.out.println(mRightEncoder.getDistance() + " Right");
+		System.out.println(mLeftEncoder.getDistance() + " Left");
 		switch(mDriveGear){
 		case HIGH:
 			setHighGear();

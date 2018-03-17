@@ -193,35 +193,35 @@ public class Shooter extends Subsystem {
 	
 	//get shooter speed info
 	private double getLeftFrontRpm(){
-		return mLeftFrontShooterTalon.getSelectedSensorVelocity(5);
+		return mLeftFrontShooterTalon.getSelectedSensorVelocity(0);
 	}
 	
 	private double getLeftRearRpm(){
-		return mLeftRearShooterTalon.getSelectedSensorVelocity(6);
+		return mLeftRearShooterTalon.getSelectedSensorVelocity(0);
 	}
 	
 	private double getRightFrontRpm(){
-		return mRightFrontShooterTalon.getSelectedSensorVelocity(3);
+		return mRightFrontShooterTalon.getSelectedSensorVelocity(0);
 	}
 	
 	private double getRightRearRpm(){
-		return mRightRearShooterTalon.getSelectedSensorVelocity(4);
+		return mRightRearShooterTalon.getSelectedSensorVelocity(0);
 	}
 	
 	private double getLeftFrontSetpoint(){
-		return mLeftFrontShooterTalon.getClosedLoopTarget(5);
+		return mLeftFrontShooterTalon.getClosedLoopTarget(0);
 	}
 	
 	private double getLeftRearSetpoint(){
-		return mLeftRearShooterTalon.getClosedLoopTarget(6);
+		return mLeftRearShooterTalon.getClosedLoopTarget(0);
 	}
 	
 	private double getRightFrontSetpoint(){
-		return mRightFrontShooterTalon.getClosedLoopTarget(3);
+		return mRightFrontShooterTalon.getClosedLoopTarget(0);
 	}
 	
 	private double getRightRearSetpoint(){
-		return mRightRearShooterTalon.getClosedLoopError(4);
+		return mRightRearShooterTalon.getClosedLoopError(0);
 	}
 
 	
@@ -244,12 +244,12 @@ public class Shooter extends Subsystem {
 	//set shooter ready state
 private boolean RightIsOnTarget(){
 		
-		return ((Math.abs(getRightFrontRpm() - mRightFrontShooterTalon.getClosedLoopTarget(5)) < Constants.kFlywheelOnTargetTolerance ));
+		return ((Math.abs(getRightFrontRpm() - mRightFrontShooterTalon.getClosedLoopTarget(0)) < Constants.kFlywheelOnTargetTolerance ));
 		
 }
 		
 		private boolean leftIsOnTarget(){	
-		return ((Math.abs(getLeftFrontRpm() - mLeftFrontShooterTalon.getClosedLoopTarget(5)) < Constants.kFlywheelOnTargetTolerance ));
+		return ((Math.abs(getLeftFrontRpm() - mLeftFrontShooterTalon.getClosedLoopTarget(0)) < Constants.kFlywheelOnTargetTolerance ));
 		
 	}
 	

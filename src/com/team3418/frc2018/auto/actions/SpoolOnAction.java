@@ -15,7 +15,9 @@ public class SpoolOnAction implements Action{
 	
 	@Override
 	public void start() {
-		mShooter.shoot();
+		mShooter.slowshoot();
+		finished = true;
+		
 	}
 
 	@Override

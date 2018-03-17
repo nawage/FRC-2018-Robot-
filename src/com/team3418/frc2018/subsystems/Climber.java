@@ -28,6 +28,8 @@ public class Climber extends Subsystem {
     	mClimberVictor.set(ControlMode.PercentOutput,0);
     	mClimberVictor.setSensorPhase(false);
     	mClimberVictor.setInverted(false);
+    	mClimberState=ClimberState.STOP;
+    	mClimberReleaseState=ClimberReleaseState.UNRELEASED;
     }
     
   	public enum ClimberState {
@@ -72,10 +74,10 @@ public class Climber extends Subsystem {
 		
 		switch(mClimberReleaseState) {
 		case RELEASED:
-			release(false);
+			release(true);
 			break;
 		case UNRELEASED:
-			release(true);
+			release(false);
 			break;
 		default:
 			mClimberReleaseState = ClimberReleaseState.UNRELEASED;

@@ -15,7 +15,8 @@ public class ShootAction implements Action{
 	
 	@Override
 	public void start() {
-		mMrCush.Extend();
+		mMrCush.Retract();
+		finished = true;
 	}
 
 	@Override
