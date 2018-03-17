@@ -37,7 +37,6 @@ public class Robot extends IterativeRobot {
 		mIntake.updateSubsystem();
 		mShooter.updateSubsystem();
 		mMrCush.updateSubsystem();
-	    //mLaser.updateSubsystem();
 	    mRamp.updateSubsystem();
 	}
 	
@@ -49,7 +48,6 @@ public class Robot extends IterativeRobot {
 		mIntake.stop();
 		mShooter.stop();
 		mMrCush.stop();
-		//mLaser.stop();
 		mRamp.stop();
 	}
 	
@@ -67,7 +65,6 @@ public class Robot extends IterativeRobot {
 		mIntake = Intake.getInstance();
 		mShooter = Shooter.getInstance();
 		mMrCush = MrCush.getInstance();
-		//mLaser = Laser.getInstance();
 		mRamp = Ramp.getInstance();
 		
 		mSmartDashboardInteractions.initWithDefaults();
@@ -85,21 +82,6 @@ public class Robot extends IterativeRobot {
         mAutoExecuter = new AutoExecuter();
         mAutoExecuter.setAutoRoutine(mSmartDashboardInteractions.getSelectedAutonMode());
         mAutoExecuter.start();
-		
-        /*FMS CODE
-        String gameData;
-		gameData = DriverStation.getInstance().getGameSpecificMessage();
-		if(gameData.length() > 1) {
-			if(gameData.charAt(0) == 'L') {
-			//Put left auto code here
-				
-			}
-			else {
-			//Put right auto code here
-				
-		  	}
-        }
-		*/
                 
 		stopAllSubsystems();
 		updateAllSubsystems();
@@ -147,7 +129,6 @@ public class Robot extends IterativeRobot {
 //        mMinionVision.stopVision();
         
 		stopAllSubsystems();
-		//mHardwareMap.mGyro.reset();
 		mDrivetrain.lowGear();
 		updateAllSubsystems();
 	}
@@ -196,7 +177,13 @@ public class Robot extends IterativeRobot {
 		//Shooter Spool
 		if (mControlBoard.getSecondarySpoolButton()) {
 			mShooter.shoot();
-		} else {
+			//mShooter.slowshoot();
+			//System.out.println((mRamp.getRampState()));
+		}
+		else if (mControlBoard.getSecondaryReverseSpoolButton()) {
+			mShooter.reverse();
+		}
+		else {
 			mShooter.stop();
 		}
 
@@ -208,9 +195,6 @@ public class Robot extends IterativeRobot {
 			mDrivetrain.lowGear();
 		}
 		mDrivetrain.setTankDriveSpeed(mControlBoard.getDriverLeftY(), mControlBoard.getDriverRightY());
-		
-		//Laser
-		//mLaser.updateSubsystem();
 		
 		//Ramp Aim
 		if(mControlBoard.getSecondaryHighAimButton()){
@@ -234,15 +218,6 @@ public class Robot extends IterativeRobot {
 		}
 		if(mControlBoard.getSecondaryRightArmCloseButton()){
 			mIntake.close();
-		}
-		
-		
-		//Cameras
-		if(mControlBoard.getSecondaryCam1Button()){
-			 
-		}
-		if(mControlBoard.getSecondaryCam2Button()){
-			 
 		}
 		
 		//Climber Release (with double safety switch)

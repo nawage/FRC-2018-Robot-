@@ -121,7 +121,7 @@ public class ControlBoard {
     	return mSecondaryDriverStick.getRawAxis(3) > .1;
     }
     
-    public boolean getSecondaryCam1Button(){
+    public boolean getSecondaryReverseSpoolButton(){
     	return mSecondaryDriverStick.getRawButton(5);
     }
     

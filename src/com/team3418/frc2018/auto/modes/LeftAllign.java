@@ -13,7 +13,7 @@ public class LeftAllign extends AutoModeBase {
 
 	@Override
 	protected void routine() throws AutoModeEndedException {
-		//FMS CODE
+		/*FMS CODE
         String gameData;
 		gameData = DriverStation.getInstance().getGameSpecificMessage();
 		if(gameData.length() > 0) {
@@ -43,5 +43,6 @@ public class LeftAllign extends AutoModeBase {
 				}
 		  	}
         }
+        */
 	}
 }

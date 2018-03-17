@@ -1,10 +1,10 @@
 package com.team3418.frc2018.subsystems;
 
-
 import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.can.*;
 import com.team3418.frc2018.Constants;
 import com.team3418.frc2018.HardwareMap;
+import com.team3418.frc2018.subsystems.Ramp.RampState;
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 import edu.wpi.first.wpilibj.VictorSP;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
@@ -17,6 +17,9 @@ public class Shooter extends Subsystem {
     public static Shooter getInstance() {
         return mInstance;
     }
+    
+    Ramp mRamp = Ramp.getInstance();
+    RampState mRampState = mRamp.getRampState();
     
     TalonSRX mLeftFrontShooterTalon;
 	TalonSRX  mLeftRearShooterTalon;
@@ -114,7 +117,7 @@ public class Shooter extends Subsystem {
     }
     
     public enum ShooterState {
-    	SHOOT, STOP
+    	SHOOT, SLOWSHOOT, REVERSE, STOP
     }
     
     private double mTargetShooterRpm;
@@ -145,9 +148,13 @@ public class Shooter extends Subsystem {
 		switch(mShooterState){
 		case SHOOT:
 			//setShooterRpm(mTargetShooterRpm);
-			//if mRamp.getRampState() = {
-				setShooterOpenLoop(1);
-			//}
+			setShooterOpenLoop(1);
+			break;
+		case SLOWSHOOT:
+			setShooterOpenLoop(0.5);
+			break;
+		case REVERSE:
+			setShooterOpenLoop(-0.2);
 			break;
 		case STOP:
 			setShooterOpenLoop(0);
@@ -169,6 +176,14 @@ public class Shooter extends Subsystem {
 	
 	public void shoot(){
 		mShooterState = ShooterState.SHOOT;
+	}
+	
+	public void slowshoot(){
+		mShooterState = ShooterState.SLOWSHOOT;
+	}
+	
+	public void reverse(){
+		mShooterState = ShooterState.REVERSE;
 	}
 	
 	@Override

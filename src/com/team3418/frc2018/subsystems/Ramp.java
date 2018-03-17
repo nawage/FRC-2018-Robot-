@@ -37,6 +37,14 @@ public class Ramp extends Subsystem
 		return mRampState;
 	}
 	
+	/*
+	public int getRampStateInt() {
+		if mRampState = RampState.HIGH {
+			
+		}
+	}
+	*/
+	
 	@Override
 	public void updateSubsystem()
 	{

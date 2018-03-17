@@ -5,6 +5,7 @@ import com.ctre.phoenix.motorcontrol.can.VictorSPX;
 import com.team3418.frc2018.Constants;
 import com.team3418.frc2018.HardwareMap;
 import com.team3418.frc2018.subsystems.Intake.IntakeArmState;
+import com.team3418.frc2018.subsystems.Ramp.RampState;
 
 import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj.VictorSP;
@@ -97,10 +98,18 @@ public class Climber extends Subsystem {
 		mClimberReleaseState = ClimberReleaseState.RELEASED;
 	}
 	
+	public void Unrelease(){
+		mClimberReleaseState = ClimberReleaseState.UNRELEASED;
+	}
+	
+	public void stopClimber() {
+		mClimberState = ClimberState.STOP;
+	}
+	
 	@Override
 	public void stop(){
-		mClimberState = ClimberState.STOP;
-		mClimberReleaseState = ClimberReleaseState.UNRELEASED;
+		stopClimber();
+		Unrelease();
 	}
 	
 	public void hold(){
