@@ -81,7 +81,6 @@ public class ControlBoard {
     //
     
     //SECONDARY CONTROLLER
-    
     //secondary functional controls
  
     
@@ -159,5 +158,25 @@ public class ControlBoard {
     
     public boolean getSecondaryClimberRelease(){
     	return mSecondaryDriverStick.getRawButton(2);
+    }
+    
+    public boolean getSwitchboardLeftAuto(){
+    	return mSwitchboard.getRawButton(9);
+    }
+    
+    public boolean getSwitchboardMiddleAuto(){
+    	return mSwitchboard.getRawButton(10);
+    }
+    
+    public boolean getSwitchboardRightAuto(){
+    	return mSwitchboard.getRawButton(11);
+    }
+    
+    public boolean getSwitchboardForwardAuto(){
+    	return mSwitchboard.getRawButton(12);
+    }
+    
+    public boolean getSwitchboardStandStillAuto(){
+    	return mSwitchboard.getRawButton(13);
     }
 }

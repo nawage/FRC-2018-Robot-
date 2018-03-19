@@ -32,18 +32,15 @@ public class Ramp extends Subsystem
     }
 	
 	private RampState mRampState;
+	private int mRampStateInt = 0;
 	
 	public RampState getRampState() {
 		return mRampState;
 	}
 	
-	/*
 	public int getRampStateInt() {
-		if mRampState = RampState.HIGH {
-			
-		}
+		return mRampStateInt;
 	}
-	*/
 	
 	@Override
 	public void updateSubsystem()
@@ -65,10 +62,12 @@ public class Ramp extends Subsystem
 	
 	public void high(){
 		mRampState = RampState.HIGH;
+		mRampStateInt = 0;
 	}
 	
 	public void low(){
 		mRampState = RampState.LOW;
+		mRampStateInt = 1;
 	}
 	
 	public void setRampLow(boolean arms) {

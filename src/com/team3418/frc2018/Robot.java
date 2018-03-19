@@ -11,6 +11,7 @@ import com.team3418.frc2018.subsystems.Ramp;
 import com.team3418.frc2018.subsystems.Shooter;
 import com.team3418.frc2018.subsystems.Intake.IntakeArmState;
 
+import edu.wpi.first.wpilibj.GenericHID.RumbleType;
 import edu.wpi.first.wpilibj.IterativeRobot;
 
 public class Robot extends IterativeRobot {
@@ -56,7 +57,7 @@ public class Robot extends IterativeRobot {
 		
 		mHardwareMap = HardwareMap.getInstance();
 		mControlBoard = ControlBoard.getInstance();
-		mSmartDashboardInteractions = new SmartDashboardInteractions();
+		mSmartDashboardInteractions = SmartDashboardInteractions.getInstance();
 //		mMinionVision = MinionVision.getInstance();
 //		mMinionVision.startVision();
 		
@@ -80,7 +81,7 @@ public class Robot extends IterativeRobot {
         mAutoExecuter = null;
 //        
         mAutoExecuter = new AutoExecuter();
-        mAutoExecuter.setAutoRoutine(mSmartDashboardInteractions.getSelectedAutonMode());
+        mAutoExecuter.setAutoRoutine(mSmartDashboardInteractions.getSelectedAutonMode(0));
         mAutoExecuter.start();
                 
 		stopAllSubsystems();
@@ -168,17 +169,30 @@ public class Robot extends IterativeRobot {
 		}
 		
 		//Shooter Popper
-		if (mControlBoard.getSecondaryShootButton()) {
-			mMrCush.Retract();
-		} else {
+		if (mControlBoard.getSecondaryShootButton() && mControlBoard.getSecondarySpoolButton()) {
+			if (mShooter.isShooterReady()) {
+				mMrCush.Retract();
+			}
+			else {
+				mMrCush.Extend();
+			}
+		}
+		else {
 			mMrCush.Extend();
 		}
 		
 		//Shooter Spool
 		if (mControlBoard.getSecondarySpoolButton()) {
-			mShooter.shoot();
-			//mShooter.slowshoot();
-			//System.out.println((mRamp.getRampState()));
+			if (mRamp.getRampStateInt() == 0) {
+				mShooter.shoot();
+			}
+			else if (mRamp.getRampStateInt() == 1) {
+				mShooter.slowshoot();
+			}
+			
+			//controller shooter/spool rumble
+			//if 
+			//ControlBoard.setRumble(RumbleType.kRightRumble, 1);
 		}
 		else if (mControlBoard.getSecondaryReverseSpoolButton()) {
 			mShooter.reverse();
@@ -226,7 +240,6 @@ public class Robot extends IterativeRobot {
 		}
 		
 		updateAllSubsystems();
-		
 	}
 	
 	@Override

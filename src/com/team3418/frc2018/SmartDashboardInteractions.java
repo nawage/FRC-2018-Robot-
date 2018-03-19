@@ -1,17 +1,24 @@
 package com.team3418.frc2018;
 
 import com.team3418.frc2018.auto.AutoModeBase;
+import com.team3418.frc2018.auto.modes.ForwardLine;
 import com.team3418.frc2018.auto.modes.LeftAllign;
 import com.team3418.frc2018.auto.modes.MiddleAllign;
 import com.team3418.frc2018.auto.modes.RightAllign;
-import com.team3418.frc2018.auto.modes.ShootMode;
 import com.team3418.frc2018.auto.modes.StandStillMode;
 import com.team3418.frc2018.auto.modes.TestMode;
+import com.team3418.frc2018.subsystems.Shooter;
 
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class SmartDashboardInteractions {
+	static SmartDashboardInteractions mInstance = new SmartDashboardInteractions();
+	
+    public static SmartDashboardInteractions getInstance() {
+        return mInstance;
+    }
+    
 	//test
 	
 	//chooser object to send to smartdashboard
@@ -46,7 +53,7 @@ public class SmartDashboardInteractions {
     }
 	
 	//compares selected auto mode to AutonOptions and returns the created mode
-    public AutoModeBase getSelectedAutonMode() {
+    public AutoModeBase getSelectedAutonMode(int robotPosition) {
         AutonOption selectedOption = DEFAULT_MODE;
         for (AutonOption autonOption : AutonOption.values()) {
             if (autonOption == mAutoChooser.getSelected()) {
@@ -59,10 +66,10 @@ public class SmartDashboardInteractions {
     
     public int getSelectedAutonSettings() {
         int selectedSetting = 0;
-        if (mAutoSettings.getSelected() == AutonSettings.SWITCH) {
+        if (mAutoSettings.getSelected() == AutonSettings.SCALE) {
         	selectedSetting = 0;
         }
-        else if (mAutoSettings.getSelected() == AutonSettings.SCALE) {
+        else if (mAutoSettings.getSelected() == AutonSettings.SWITCH) {
         	selectedSetting = 1;
         }
         
@@ -70,12 +77,12 @@ public class SmartDashboardInteractions {
     }
     
     
-    //enum to hold all possible auto modes
+   //enum to hold all possible auto modes
    private enum AutonOption {
 	    LEFT_ALLIGN("left robot allignment", new LeftAllign()), //
 	    MIDDLE_ALLIGN("middle robot allignment", new MiddleAllign()), //
 	    RIGHT_ALLIGN("right robot allignment", new RightAllign()), //
-        FORWARD_LINE("forward line", new ShootMode()), //
+        FORWARD_LINE("forward line", new ForwardLine()), //
         STAND_STILL("stand still", new StandStillMode()),//
     	TEST("test (do not use at comp)", new TestMode()); //
         

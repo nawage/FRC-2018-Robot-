@@ -30,8 +30,7 @@ public class MrCush extends Subsystem {
   		return mMrCushState;
   	}
 	
-
-	
+  	
 	@Override
 	public void updateSubsystem() {
 		

@@ -242,15 +242,12 @@ public class Shooter extends Subsystem {
 	}
 	
 	//set shooter ready state
-private boolean RightIsOnTarget(){
-		
+	private boolean RightIsOnTarget(){
 		return ((Math.abs(getRightFrontRpm() - mRightFrontShooterTalon.getClosedLoopTarget(0)) < Constants.kFlywheelOnTargetTolerance ));
+	}
 		
-}
-		
-		private boolean leftIsOnTarget(){	
+	private boolean leftIsOnTarget(){	
 		return ((Math.abs(getLeftFrontRpm() - mLeftFrontShooterTalon.getClosedLoopTarget(0)) < Constants.kFlywheelOnTargetTolerance ));
-		
 	}
 	
 	private boolean bothIsOnTarget(){
