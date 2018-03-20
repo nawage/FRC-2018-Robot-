@@ -191,8 +191,16 @@ public class Robot extends IterativeRobot {
 			}
 			
 			//controller shooter/spool rumble
-			//if 
-			//ControlBoard.setRumble(RumbleType.kRightRumble, 1);
+			if (mControlBoard.getSecondarySpoolButton()) {
+				if (mShooter.isShooterReady()) {
+					mControlBoard.mSecondaryDriverStick.setRumble(RumbleType.kRightRumble, 1);
+					mControlBoard.mSecondaryDriverStick.setRumble(RumbleType.kLeftRumble, 1);
+				}
+				else {
+					mControlBoard.mSecondaryDriverStick.setRumble(RumbleType.kRightRumble, 0.2);
+					mControlBoard.mSecondaryDriverStick.setRumble(RumbleType.kLeftRumble, 0.2);
+				}
+			}
 		}
 		else if (mControlBoard.getSecondaryReverseSpoolButton()) {
 			mShooter.reverse();

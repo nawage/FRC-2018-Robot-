@@ -12,7 +12,7 @@ public class ControlBoard {
     
     //Create Joystick Object
     private final Joystick mDriverStick;
-    private final Joystick mSecondaryDriverStick;
+    public final Joystick mSecondaryDriverStick;
     private final Joystick mSwitchboard;
     
     //Initialize Joystick Object
