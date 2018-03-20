@@ -70,7 +70,7 @@ public class ControlBoard {
     	return mSecondaryDriverStick.getPOV(0)==90 || mSecondaryDriverStick.getPOV(0)==45||mSecondaryDriverStick.getPOV(0)==135;
     	
     }
-    public boolean getPovDown(){
+    public boolean getSecondaryReverseSpoolButton(){
     	return mSecondaryDriverStick.getPOV(0)==180 || mSecondaryDriverStick.getPOV(0)==135||mSecondaryDriverStick.getPOV(0)==225;
     	
     }
@@ -120,7 +120,7 @@ public class ControlBoard {
     	return mSecondaryDriverStick.getRawAxis(3) > .1;
     }
     
-    public boolean getSecondaryReverseSpoolButton(){
+    public boolean getSecondarySlowSpoolButton(){
     	return mSecondaryDriverStick.getRawButton(5);
     }
     

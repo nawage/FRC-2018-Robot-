@@ -42,6 +42,7 @@ public class Climber extends Subsystem {
   	
   	private ClimberState mClimberState;
   	private ClimberReleaseState mClimberReleaseState;
+  	private int mClimberReleaseStateInt = 0;
   	
   	public ClimberState getClimberState() {
   		return mClimberState;
@@ -49,6 +50,10 @@ public class Climber extends Subsystem {
   	
   	public ClimberReleaseState getClimberReleaseState() {
   		return mClimberReleaseState;
+  	}
+  	
+  	public int getClimberReleaseStateInt() {
+  		return mClimberReleaseStateInt;
   	}
     
 	@Override
@@ -75,9 +80,11 @@ public class Climber extends Subsystem {
 		switch(mClimberReleaseState) {
 		case RELEASED:
 			release(true);
+			mClimberReleaseStateInt = 0;
 			break;
 		case UNRELEASED:
 			release(false);
+			mClimberReleaseStateInt = 1;
 			break;
 		default:
 			mClimberReleaseState = ClimberReleaseState.UNRELEASED;

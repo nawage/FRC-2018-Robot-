@@ -158,11 +158,11 @@ public class Robot extends IterativeRobot {
 		}
 		
 		//Climber
-		if (mControlBoard.getClimberForwardButton()) {
+		if ((mControlBoard.getClimberForwardButton()) && (mClimber.getClimberReleaseStateInt() == 0)) {
 			mClimber.forward();
-		} else if (mControlBoard.getClimberHoldButton()) {
+		} else if (mControlBoard.getClimberHoldButton() && (mClimber.getClimberReleaseStateInt() == 0)) {
 			mClimber.hold();
-		} else if (mControlBoard.getClimberReverseButton()) {
+		} else if (mControlBoard.getClimberReverseButton() && (mClimber.getClimberReleaseStateInt() == 0)) {
 			mClimber.reverse();
 		} else {
 			mClimber.stop();
@@ -201,6 +201,9 @@ public class Robot extends IterativeRobot {
 					mControlBoard.mSecondaryDriverStick.setRumble(RumbleType.kLeftRumble, 0.2);
 				}
 			}
+		}
+		else if (mControlBoard.getSecondarySlowSpoolButton()) {
+			mShooter.slowshoot();
 		}
 		else if (mControlBoard.getSecondaryReverseSpoolButton()) {
 			mShooter.reverse();
